@@ -1,0 +1,48 @@
+{
+"jobs" : [
+    {
+      "company": "Terakoya Academia Inc",
+      "position": "Software Engineer",
+      "period": "May 2021 - May 2022",
+      "url" : "",
+      "responsibilities": [
+        "Write modern, performant, maintainable code for a diverse array of client and internal projects",
+        "Work with a variety of different languages, platforms, frameworks, and content management systems such as JavaScript, TypeScript, Gatsby, React, Craft, WordPress, Prismic, and Netlify",
+        "Communicate with multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis"
+      ]
+    },
+    {
+      "company": "Terakoya Academia Inc",
+      "position": "Software Engineer Intern",
+      "period": "Feburary - April 2021",
+      "url" : "",
+      "responsibilities": [
+        "Worked with a team of three designers to build a marketing website and e-commerce platform for blistabloc, an ambitious startup originating from Northeastern",
+        "Helped solidify a brand direction for blistabloc that spans both packaging and web",
+        "Interfaced with clients on a weekly basis, providing technological expertise"
+      ]
+    },
+    {
+      "company": "Aamzon",
+      "position": "Software Engineer Intern",
+      "period": "Feburary - April 2021",
+      "url" : "https://www.amzon.com",
+      "responsibilities": [
+        "Worked with a team of three designers to build a marketing website and e-commerce platform for blistabloc, an ambitious startup originating from Northeastern",
+        "Helped solidify a brand direction for blistabloc that spans both packaging and web",
+        "Interfaced with clients on a weekly basis, providing technological expertise"
+      ]
+    },
+    {
+      "company": "Google",
+      "position": "Software Engineer Intern",
+      "period": "Feburary - April 2021",
+      "url" : "",
+      "responsibilities": [
+        "Worked with a team of three designers to build a marketing website and e-commerce platform for blistabloc, an ambitious startup originating from Northeastern",
+        "Helped solidify a brand direction for blistabloc that spans both packaging and web",
+        "Interfaced with clients on a weekly basis, providing technological expertise"
+      ]
+    }
+  ]
+}
