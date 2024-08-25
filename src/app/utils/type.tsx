@@ -15,7 +15,8 @@ export type ProjectData = {
     backgroundImage: string
 };
 
-export type Experience = {
+export type ExperienceData = {
+    id : number;
     company: string;
     position: string;
     period: string;
