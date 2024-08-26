@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={jet_brain_mono.variable}>
         {/* <Header/> */}
         {children}
-        <Footer/>
+        {/* <Footer/> */}
         </body>
     </html>
     
