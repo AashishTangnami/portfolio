@@ -3,7 +3,7 @@ import { Button } from "./ui/Button";
 import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { FloatingDockDemo } from "./floating-nav";
-import { FaArrowDown } from "react-icons/fa";
+import { IconMessageChatbot } from "@tabler/icons-react";
 import Footer from "./Footer";
 
 const Contact = () => {
@@ -15,8 +15,6 @@ const Contact = () => {
     <p className="text-lg text-center mb-8 max-w-xl">
       I’m always open to discussing new opportunities in Data Science and Machine Learning roles. 
       Whether you have a question, a project, want to hire me, or just want to say hi, feel free to reach out.
-      I’m always open to discussing new opportunities in Data Science and Machine Learning roles. 
-      Whether you have a question, a project, want to hire me, or just want to say hi, feel free to reach out.
     </p>
     <motion.div
       className="flex flex-col items-center justify-center text-center py-10"
@@ -25,7 +23,7 @@ const Contact = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <motion.div
-        className="text-xl font-bold text-textPrimary mb-4"
+        className="text-xl font-bold text-textPrimary mb-4 hidden"
         whileHover={{ scale: 1.1 }}
       >
         Hire Me
@@ -40,8 +38,8 @@ const Contact = () => {
           repeatType: "loop",
         }}
       >
-        <FaArrowDown size={30} />
-        <span className="text-sm mt-2">Contact Me</span>
+        <IconMessageChatbot size={30} />
+        <span className="text-sm mt-2">Hi!</span>
       </motion.div>
     </motion.div>
     <FloatingDockDemo/>
