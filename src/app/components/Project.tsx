@@ -1,4 +1,3 @@
-  
 "use client";
 
 import React, { useEffect, useState } from 'react';
@@ -7,12 +6,13 @@ import { motion } from 'framer-motion';
 import { ProjectData } from '../utils/type';
 import { IconBrandGithub } from '@tabler/icons-react';
 
-
-export default function Project(){
+export default function Project() {
+  const GRID_LIMIT = 6; // Default for larger screens
+  const MOBILE_GRID_LIMIT = 4; // Limit for mobile screens
   const [showMore, setShowMore] = useState(false);
   const [projectData, setProjectData] = useState<ProjectData[]>([]);
-  const GRID_LIMIT = 6;
-  
+  const [gridLimit, setGridLimit] = useState(GRID_LIMIT); // Default GRID_LIMIT based on screen size
+
   
   
   useEffect(() => {
@@ -37,8 +37,27 @@ export default function Project(){
       .catch(error => console.error('Error loading JSON:', error));
   }, []);
   
+  useEffect(() => {
+    // Function to update grid limit based on window size
+    const updateGridLimit = () => {
+      if (window.innerWidth <= 640) { // Adjust for mobile screen size
+        setGridLimit(MOBILE_GRID_LIMIT);
+      } else {
+        setGridLimit(GRID_LIMIT);
+      }
+    };
 
-  const projectsToShow = showMore ? projectData : projectData.slice(0, GRID_LIMIT);
+    // Call the function on initial render
+    updateGridLimit();
+
+    // Add event listener to update grid limit on resize
+    window.addEventListener('resize', updateGridLimit);
+
+    // Clean up the event listener
+    return () => window.removeEventListener('resize', updateGridLimit);
+  }, []);
+
+  const projectsToShow = showMore ? projectData : projectData.slice(0, gridLimit);
 
   return (
     <section id="projects" className="min-h-screen bg-primary flex flex-col items-center test-white px-8 py-24 border-b-2">
@@ -46,67 +65,50 @@ export default function Project(){
       <h3 className="text-2xl font-bold text-textPrimary pb-20">Some of my recent projects</h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mx-2">
-        {projectsToShow.map((project,i) => (
-          
+        {projectsToShow.map((project, i) => (
           <motion.div
             key={project.id}
             className="relative bg-slate-200 rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.005, delay: i * 0.005 }}
-            whileHover = {{ scale: 1.05 }}
-            whileTap = {{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-semibold text-textPrimary mb-2">{project.title}</h3>
+                <h3 className="text-xl font-semibold text-textPrimary mb-2">{project.title}</h3>
                 <div className="flex space-x-5">
                   {project.githubLink && (
                     <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
                       <IconBrandGithub className="text-gray-600 dark:text-gray-500 w-6 h-6 hover:text-green-400" />
                     </a>
                   )}
-                  
                   {project.externalLink && (
-                    <a 
-                    href={project.externalLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer">
+                    <a href={project.externalLink} target="_blank" rel="noopener noreferrer">
                       <FaFolderOpen className="text-gray-600 dark:text-gray-500 w-6 h-6 hover:text-green-400" />
                     </a>
                   )}
                 </div>
               </div>
-            {/* Description with Background Image */}
-            {/* <div
-              className="relative flex-1 mb-4 bg-cover bg-center bg-slate-800 p-4 rounded-md "
-              style={{ 
-                backgroundImage: `url(${project.backgroundImage})`,
-                opacity: 0.6,
-              }}
-            > */}
-            <div className="">
-              <p className="min-h-[200px] bg-slate-200 p-2 rounded-md">
-                {project.description}
-              </p>
-            </div>
-              
-            {/* </div> */}
-                {/* Tech Stack */}
+              <div>
+                <p className="min-h-[200px] bg-slate-200 p-2 rounded-md">
+                  {project.description}
+                </p>
+              </div>
               <div className="mt-4">
-              <ul className="flex flex-wrap space-x-2 mt-auto">
-                {project.techStack.map((tech: string, i: number) => {
-                  return (
+                <ul className="flex flex-wrap space-x-2 mt-auto">
+                  {project.techStack.map((tech: string, i: number) => (
                     <li key={i} className="text-xs text-textPrimary font-medium">{tech}</li>
-                  );
-                })}
-              </ul>
-            </div>
+                  ))}
+                </ul>
+              </div>
             </div>
           </motion.div>
         ))}
       </div>
-      {projectData.length > GRID_LIMIT && (
+
+      {projectData.length > gridLimit && (
         <motion.button
           onClick={() => setShowMore(!showMore)}
           whileHover={{ scale: 1.05 }}
@@ -117,7 +119,5 @@ export default function Project(){
         </motion.button>
       )}
     </section>
- 
   );
-};
-
+}

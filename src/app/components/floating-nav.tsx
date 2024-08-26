@@ -33,7 +33,7 @@ export function FloatingDockDemo() {
     },
   ];
   return (
-    <div className="flex items-center justify-center pt-28 pb-10 w-full ">
+    <div className="flex items-center justify-center pt-28 pb-10 w-full">
       <FloatingDock
       mobileClassName="translate-y-10"
         items={links}

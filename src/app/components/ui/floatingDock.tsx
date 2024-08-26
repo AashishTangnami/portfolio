@@ -42,14 +42,14 @@ const FloatingDockMobile = ({
   items: { title: string; icon: React.ReactNode; href: string }[];
   className?: string;
 }) => {
-  const [open, setOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
   return (
-    <div className={cn("relative block md:hidden", className)}>
+    <div className={cn("relative block", className)}>
       <AnimatePresence>
-        {open && (
           <motion.div
             layoutId="nav"
-            className="absolute bottom-full mb-2 inset-x-0 flex flex-col gap-1"
+            className="absolute bottom-full mb-2 inset-x-0 flex flex-row gap-1 items-center justify-center md:hidden"
           >
             {items.map((item, idx) => (
               <motion.div
@@ -67,25 +67,34 @@ const FloatingDockMobile = ({
                   },
                 }}
                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
+                className="flex items-center justify-center relative"
+                onMouseEnter={() => setHoveredItem(item.title)}
+                onMouseLeave={() => setHoveredItem(null)}
               >
                 <Link
+
                   href={item.href}
                   key={item.title}
-                  className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-900 flex items-center justify-center"
+                  className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-500 flex items-center justify-center"
                 >
                   <div className="h-5 w-5">{item.icon}</div>
                 </Link>
+                {/* Show title when hovered */}
+                {hoveredItem === item.title && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
+                className="absolute top-[-30px] px-2 py-1 bg-green-400 text-white text-xs rounded-md shadow-lg"
+              >
+                {item.title}
               </motion.div>
+                )}
+               </motion.div>
             ))}
           </motion.div>
-        )}
       </AnimatePresence>
-      <button
-        onClick={() => setOpen(!open)}
-        className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-600 flex items-center justify-center"
-      >
-        <IconLayoutNavbarCollapse className="h-6 w-6 text-neutral-500 dark:text-neutral-400" /> 
-      </button>
     </div>
   );
 };
@@ -98,6 +107,7 @@ const FloatingDockDesktop = ({
   className?: string;
 }) => {
   let mouseX = useMotionValue(Infinity);
+  
   return (
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}

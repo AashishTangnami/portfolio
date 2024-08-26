@@ -65,6 +65,7 @@ export default function Home() {
       <a href="#experience" className="text-black nav-link word-link">Experience</a>
       <a href="#projects" className="text-black nav-link word-link">Projects</a>
       <a href="#contact" className="text-black nav-link word-link">Contact</a>
+      <a href="/resume" className="text-black nav-link word-link border-l-4 border-slate-300 pl-8">Resume</a>
     </div>
     
     {/* <!-- Hamburger Icon (Visible on mobile) --> */}
@@ -96,6 +97,7 @@ export default function Home() {
           <a href="#experience" className="block py-2 text-black nav-link word-link">Experience</a>
           <a href="#projects" className="block py-2 text-black nav-link word-link">Projects</a>
           <a href="#contact" className="block py-2 text-black nav-link word-link">Contact</a>
+          <a href="/resume" className="block py-2 text-black nav-link word-link">Resume</a> {/* Added Resume Link */}
         </div>
       </>
       )}
