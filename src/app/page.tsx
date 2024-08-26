@@ -56,7 +56,7 @@ export default function Home() {
     <div className="container mx-auto flex justify-between items-center">
     {/* <!-- Logo --> */}
     <div className="text-black text-xl font-bold">
-      <a href="#">Logo</a>
+      <a href="#">A.T</a>
     </div>
     
     {/* <!-- Navigation Links (Hidden on mobile) --> */}
