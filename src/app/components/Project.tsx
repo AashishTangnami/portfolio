@@ -62,7 +62,7 @@ export default function Project() {
   return (
     <section id="projects" className="min-h-screen bg-primary flex flex-col items-center test-white px-8 py-24 border-b-2">
       <h2 className="text-3xl font-bold text-textPrimary text-center items-center">Projects<br></br></h2>
-      <h3 className="text-2xl font-bold text-textPrimary pb-20">Some of my recent projects</h3>
+      <h3 className="text-2xl font-bold text-textPrimary pb-20 text-center">Some of my recent projects</h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mx-2">
         {projectsToShow.map((project, i) => (

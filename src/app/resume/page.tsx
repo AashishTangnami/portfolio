@@ -5,6 +5,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { IoArrowBack } from 'react-icons/io5';
+import { cache } from 'react'
 
 // Dynamically import FaFilePdf icon to reduce initial bundle size
 const FaFilePdf = dynamic(() => import('react-icons/fa').then(mod => mod.FaFilePdf), { ssr: false });
@@ -58,7 +59,7 @@ export default function ResumePage() {
           <Link href="/#" className="flex items-center space-x-2">
             <motion.div 
             variants={arrowVariants} 
-            animate="animate"
+            whileHover="hover"
             >
               <IoArrowBack className="text-xl" />
             </motion.div>
@@ -72,7 +73,7 @@ export default function ResumePage() {
           download="Aashish_Tangnami-(CV).pdf" // Customize the download filename
           className="w-full sm:w-auto py-2 px-4 bg-green-500 text-white rounded-lg hover:bg-green-700 transition flex items-center justify-center"
         >
-        <motion.div variants={fileVariants} animate="animate">
+        <motion.div variants={fileVariants} whileHover="hover">
             <FaFilePdf className="mr-2" />
           </motion.div>
           Download PDF
