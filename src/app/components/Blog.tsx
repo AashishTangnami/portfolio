@@ -27,7 +27,7 @@ export default function Blog() {
           </text>
         </svg>
         <p className="mt-6 text-gray-600">
-          We're working hard to bring you great content! Please check back soon.
+          We&apos;re working hard to bring you great content! Please check back soon.
         </p>
       </div>
     </div>
