@@ -65,27 +65,27 @@ export default function About() {
 
 
     return (
-        <section id="about" className="min-h-[75vh] bg-primary text-black border-b-2 py-24">
+        
+        <section id="about" className="bg-primary text-black border-b-2 py-20">
             <div className="container mx-auto px-4 py-12">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl text-center font-semibold mb-8">About Me</h2>
 
                 <div className="items-center justify-center mx-auto">
                     <div className="md:w-3/4 ml-8">
-                        <p className="mb-4 text-base sm:text-lg md:text-md leading-relaxed">
-                            Hello! I am a data scientist and software engineer. I enjoy problem solving. 
-                            I worked as a software engineer for about 2 years, and my interest in AI and Data Science started 
+                        <p className="mb-4 text-md sm:text-lg md:text-md leading-relaxed">
+                            Hello! I am a data scientist and a software engineer. I have almost 2 years of software engineering experience. I got post graduate degree in AI and Data Scinence in 2024. 
                             when I was trying to solve a problem in my previous company. I have been working on AI and Data Science projects since then.
                         </p>
-                        <p className="mb-4 text-base sm:text-lg md:text-xl leading-relaxed">
-                            I am passionate about leveraging data to create meaningful insights and drive innovation. My experience spans across 
-                            various technologies and platforms, making me a versatile professional in the tech industry.
+                        <p className="mb-4 text-md sm:text-lg md:text-md leading-relaxed">
+                            As a curious, inovative individual and problem-solver, I thrive at the intersection of data nd technolgoy. With a passion for uncovering hidden insights and a drive to crafrt scalable solutions, I&aps;m always ready to dive into the next complex challenge.
+                            Armed with a growth mindset and an infectious enthusiasm, I&aps;m dedicated to harnessing the power of data to fuel informed decisions and build cutting-edge software that drives real impact.
                         </p>
                     </div>
                     
                 </div>
                 <p className="mt-8 mb-4 text-lg md:text-xl font-semibold mx-auto text-center">Technologies I love to work with:</p>
                 
-                <div className="grid grid-rows-1 md:grid-cols-6 gap-8">
+                <div className="grid grid-rows-1 xs:grid-cols-2 md:grid-cols-6 gap-8">
                     {Object.keys(skills).map((category, index) => (
                         <div key={index} className="flex flex-col items-center">
                             <h3 className="text-lg font-semibold mb-4">{category}</h3>

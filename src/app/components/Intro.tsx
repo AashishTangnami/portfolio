@@ -26,17 +26,16 @@ export default function Intro() {
   ];
     return (
       <>
-      <section id="intro" className="bg-textPrimary text-black min-h-[75vh] py-24 lg:py-24 relative overflow-hidden">
+      <section id="intro" className="bg-textPrimary text-black xxs:py-4 xs:py-8 lg:py-24 relative overflow-hidden">
         <div className="bg-grid-white/[0.02] absolute inset-0"></div>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10 py-24">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 py-24">
+          <div className="container mx-auto px-4 xxs:px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10 ">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-14 lg:gap-20 py-20">
               <div className="flex-1 text-center lg:text-left">
                 <TypewriterEffect words={words} className="mb-4 text-xl md:text-2xl lg:text-5xl" />
-               
-                <p className="text-lg sm:text-sm lg:text-xl max-w-2xl mx-auto lg:mx-0">
+                <p className="text-md sm:text-sm lg:text-xl max-w-2xl mx-auto lg:mx-0">
                   Welcome to my portfolio! <br></br>
-				  I am a dedicated professional in the fields of AI and software engineering, <br></br>
-                  committed to delivering high-quality solutions and driving innovation. <br></br>I specialize in <strong>Data Science.</strong>
+				  I am a dedicated professional in the fields of <b className="text-blue-500 dark:text-blue-500">AI and software engineering</b>, <br></br>
+                  committed to delivering high-quality solutions and driving innovation. <br></br>I specialize in <strong className="text-blue-500 dark:text-blue-500">Data Science.</strong>
                 </p>
               </div>
               <div className="lg:w-2/5 flex justify-center">

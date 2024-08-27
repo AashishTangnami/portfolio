@@ -96,21 +96,20 @@ export default function Home() {
           </button>
         </div>
       </div>
-  
+   
   {/* <!-- Mobile Menu (Initially Hidden) --> */}
   {isMenuOpen && (
     <>
-        <div className="min-h-screen md:hidden flex flex-col items-center space-y-2 mt-4">
-          <a href="#about" className="block py-2 text-black nav-link word-link ">About</a>
-          <a href="#experience" className="block py-2 text-black nav-link word-link">Experience</a>
-          <a href="#projects" className="block py-2 text-black nav-link word-link">Projects</a>
-          <a href="#contact" className="block py-2 text-black nav-link word-link">Contact</a>
-          <a href="/resume" className="block py-2 text-black nav-link word-link">Resume</a> {/* Added Resume Link */}
+        <div className="min-h-screen md:hidden flex flex-col items-center space-y-2 mt-4 text-xl py-20">
+          <a href="#about" className="block py-4 text-black nav-link word-link ">About</a>
+          <a href="#experience" className="block py-4 text-black nav-link word-link">Experience</a>
+          <a href="#projects" className="block py-4 text-black nav-link word-link">Projects</a>
+          <a href="#contact" className="block py-4 text-black nav-link word-link">Contact</a>
+          <a href="/resume" className="block py-4 text-black nav-link word-link">Resume</a> {/* Added Resume Link */}
         </div>
       </>
       )}
     </nav>
-
 
   <Intro/>
   <About/>
