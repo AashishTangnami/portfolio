@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import About from '@/app/components/About';
 import Experience from '@/app/components/Experience';
 import Contact from '@/app/components/Contact';
@@ -12,31 +12,29 @@ export default function Home() {
 
   // State to manage the toggle of the mobile menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Check if the screen is mobile  
+  const isMobile = () => window.innerWidth <= 768;
   // Function to toggle the menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const variants = {
-    open: { opacity: 1, x: 0 },
-    closed: { opacity: 0, x: "-100%" },
-  }
+  // const variants = {
+  //   open: { opacity: 1, x: 0 },
+  //   closed: { opacity: 0, x: "-100%" },
+  // }
   const handleClickOutside = useCallback((e: MouseEvent) => {
-    if ((e.target as Element).closest('.menu-container') === null && isMenuOpen) {
+    if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
       setIsMenuOpen(false);
     }
-  }, [isMenuOpen]);
+  }, []);
 
-  useEffect(() => {
-    document.addEventListener('scroll', handleScroll);
-    return () => {
-      document.removeEventListener('scroll', handleScroll);
-    };
-  }, [isMenuOpen]);
+ 
   
 // Memoize handleScroll function
   const handleScroll = useCallback(() => {
-    if (isMenuOpen) {
+    if (isMenuOpen && isMobile()) {
       setIsMenuOpen(false);
     }
   }, [isMenuOpen]);
@@ -44,13 +42,20 @@ export default function Home() {
 
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = 'hidden'; // Prevent scrolling
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('click', handleClickOutside);
+      document.addEventListener('scroll', handleScroll);
     } else {
-      document.body.style.overflow = ''; // Allow scrolling
+      document.body.style.overflow = '';
+      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('scroll', handleScroll);
     }
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [isMenuOpen]);
+    
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [isMenuOpen, handleClickOutside, handleScroll]);
 
   return (
     <>
