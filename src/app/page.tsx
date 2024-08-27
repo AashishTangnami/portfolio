@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import About from '@/app/components/About';
 import Experience from '@/app/components/Experience';
 import Contact from '@/app/components/Contact';
@@ -21,11 +21,12 @@ export default function Home() {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, x: "-100%" },
   }
-  const handleClickOutside = (e: MouseEvent) => {
+  const handleClickOutside = useCallback((e: MouseEvent) => {
     if ((e.target as Element).closest('.menu-container') === null && isMenuOpen) {
       setIsMenuOpen(false);
     }
-  };
+  }, [isMenuOpen]);
+
   useEffect(() => {
     document.addEventListener('scroll', handleScroll);
     return () => {
@@ -33,11 +34,13 @@ export default function Home() {
     };
   }, [isMenuOpen]);
   
-  const handleScroll = () => {
+// Memoize handleScroll function
+  const handleScroll = useCallback(() => {
     if (isMenuOpen) {
       setIsMenuOpen(false);
     }
-  };
+  }, [isMenuOpen]);
+
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -56,7 +59,7 @@ export default function Home() {
     <div className="container mx-auto flex justify-between items-center">
     {/* <!-- Logo --> */}
     <div className="text-black text-xl font-bold">
-      <a href="#">Logo</a>
+      <a href="#">A.T</a>
     </div>
     
     {/* <!-- Navigation Links (Hidden on mobile) --> */}
