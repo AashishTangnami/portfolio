@@ -28,7 +28,7 @@ const arrowVariants = {
     transition: {
       duration: 1,
       repeat: Infinity,
-      repeatType: "loop",
+      // repeatType: "loop",
       ease: "easeInOut",
     },
   },
@@ -39,7 +39,7 @@ const fileVariants = {
     transition: {
       duration: 1,
       repeat: Infinity,
-      repeatType: "loop", // Change the repeatType value to one of the valid options: "loop", "reverse", "mirror"
+      // repeatType: "loop", // Change the repeatType value to one of the valid options: "loop", "reverse", "mirror"
       ease: "easeInOut",
     },
   },
@@ -58,7 +58,10 @@ export default function ResumePage() {
           className="w-full sm:w-auto py-2 px-4 bg-slate-800 text-white rounded-lg hover:bg-gray-700 transition flex items-center justify-center space-x-2"
         >
           <Link href="/" className="flex items-center space-x-2">
-            <motion.div variants={arrowVariants} animate="animate">
+            <motion.div 
+            variants={arrowVariants} 
+            animate="animate"
+            >
               <IoArrowBack className="text-xl" />
             </motion.div>
             <span>Go Back</span>
