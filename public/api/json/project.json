@@ -3,62 +3,62 @@
   [{
     "id": 1,
     "title": "Portfolio Website",
-    "description": "A personal portfolio website built using React and Tailwind CSS to showcase my projects and skills.",
+    "description": "A personal portfolio website built using Next.Js and TailwindCSS to showcase my projects and skills.",
     "techStack": ["Next.Js", "Tailwind CSS", "TypeScript"],
     "githubLink": "https://github.com/AashishTangnami/portfolio",
-    "externalLink": "#",
-    "backgroundImage": "https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w1200/2023/10/free-images.jpg"
+    "externalLink": "https://aashishtangnami.vercel.app",
+    "backgroundImage": ""
   },
   {
     "id": 2,
-    "title": "E-commerce Store",
-    "description": "An e-commerce store built with Next.js and integrated with a headless CMS for content management.",
-    "techStack": ["Next.js", "Tailwind CSS", "Strapi"],
+    "title": "",
+    "description": "Project on progress",
+    "techStack": [],
     "githubLink": "#",
     "externalLink": "#",
-    "backgroundImage": "https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg?t=st=1724099139~exp=1724102739~hmac=e1fb8cf4887a828ed44c76e1d8d162c3072a182f320ea5c689337f77c02a104e&w=1480"
+    "backgroundImage": ""
   },
   {
     "id": 3,
-    "title": "Chat Application",
-    "description": "A real-time chat application using WebSockets and Node.js, with a responsive UI built with React.",
-    "techStack": ["React", "Node.js", "WebSocket"],
+    "title": "",
+    "description": "Project on progress",
+    "techStack": [],
     "githubLink": "#",
     "externalLink": "#",
-    "backgroundImage": "https://img.freepik.com/premium-vector/retro-symbols-icon-set_188544-7604.jpg?w=1480"
+    "backgroundImage": ""
   },
   {
     "id": 4,
-    "title": "Machine Learning Model Deployment",
-    "description": "Deployment of a machine learning model using Flask and Docker, with a web interface for interaction.",
-    "techStack": ["Python", "Flask", "Docker"],
+    "title": "",
+    "description": "Project on progress",
+    "techStack": [],
     "githubLink": "#",
     "externalLink": "#",
     "backgroundImage": "#"
   },
   {
     "id": 5,
-    "title": "Weather App",
-    "description": "A weather forecasting app that displays weather data using the OpenWeather API, built with React Native.",
-    "techStack": ["React Native", "API Integration", "JavaScript"],
+    "title": "",
+    "description": "Project on progress",
+    "techStack": [],
     "githubLink": "#",
     "externalLink": "#",
     "backgroundImage": "#"
   },
   {
     "id": 6,
-    "title": "Weather App",
-    "description": "A weather forecasting app that displays weather data using the OpenWeather API, built with React Native.",
-    "techStack": ["React Native", "API Integration", "JavaScript"],
+    "title": "",
+    "description": "Project on progress",
+    "techStack": [],
     "githubLink": "#",
     "externalLink": "#",
     "backgroundImage": "#"
   },
   {
     "id": 7,
-    "title": "Weather App",
-    "description": "A weather forecasting app that displays weather data using the OpenWeather API, built with React Native.",
-    "techStack": ["React Native", "API Integration", "JavaScript"],
+    "title": "",
+    "description": "Project on progress",
+    "techStack": [],
     "githubLink": "#",
     "externalLink": "#",
     "backgroundImage": "#"

@@ -1,13 +1,12 @@
 import { Button } from "./ui/Button";
 // src/components/Wrapper.tsx
-import React, { ReactNode } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FloatingDockDemo } from "./floating-nav";
-import { IconMessageChatbot } from "@tabler/icons-react";
+import { IconMessageChatbot, IconArrowUpCircle } from "@tabler/icons-react";
 import Footer from "./Footer";
 
 const Contact = () => {
-//   const { subtitle, title, paragraphs, link } = contactSection;
   return (
     <>
     <section id="contact" className="min-h-screen flex flex-col items-center justify-center p-8 bg-primary text-black">
@@ -43,17 +42,6 @@ const Contact = () => {
       </motion.div>
     </motion.div>
     <FloatingDockDemo/>
-    
-    {/* <div className="block md:hidden">
-      <motion.a
-        href="mailto:your-email@example.com"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="px-6 py-3 bg-green-500 text-white rounded-lg font-semibold shadow-lg focus:outline-none"
-      >
-        Contact Me
-      </motion.a>
-    </div> */}
   </section>
   <Footer/>
   </>
