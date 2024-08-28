@@ -58,13 +58,14 @@ export default function Project() {
   }, []);
 
   const projectsToShow = showMore ? projectData : projectData.slice(0, gridLimit);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <section id="projects" className="min-h-screen bg-primary flex flex-col items-center test-white px-8 py-24 border-b-2">
       <h2 className="text-3xl font-bold text-textPrimary text-center items-center">Projects<br></br></h2>
       <h3 className="text-2xl font-bold text-textPrimary pb-20 text-center">Some of my recent projects</h3>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mx-2">
+     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mx-2">
         {projectsToShow.map((project, i) => (
           <motion.div
             key={project.id}
@@ -75,7 +76,7 @@ export default function Project() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="p-6">
+            <div className="p-4 min-h-72">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-semibold text-textPrimary mb-2">{project.title}</h3>
                 <div className="flex space-x-5">
@@ -92,21 +93,22 @@ export default function Project() {
                 </div>
               </div>
               <div>
-                <p className="min-h-[200px] bg-slate-200 p-2 rounded-md">
+                <p className="bg-slate-200 p-2 rounded-md">
                   {project.description}
                 </p>
               </div>
-              <div className="mt-4">
+              
+            </div>
+			<div className="my-auto px-4 py-4">
                 <ul className="flex flex-wrap space-x-2 mt-auto">
                   {project.techStack.map((tech: string, i: number) => (
-                    <li key={i} className="text-xs text-textPrimary font-medium">{tech}</li>
+                    <li key={i} className="text-sm text-textPrimary font-medium">{tech}</li>
                   ))}
                 </ul>
               </div>
-            </div>
           </motion.div>
         ))}
-      </div>
+      </div> 
 
       {projectData.length > gridLimit && (
         <motion.button
