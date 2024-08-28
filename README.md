@@ -1,3 +1,9 @@
+Thank you for taking your time to readme! 😃 
+
+This is my personal portfolio website still in progress. The project is still experimental for myself.
+
+Note : I suggest not to clone this repo yet.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
