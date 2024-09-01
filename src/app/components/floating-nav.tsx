@@ -15,7 +15,7 @@ export function FloatingDockDemo() {
       icon: (
         <IconBrandGmail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "mailto:your-email@example.com",
+      href: "mailto:tangnamiaashish@gmail.com",
     },
     {
       title: "LinkedIn",

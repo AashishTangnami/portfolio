@@ -56,11 +56,11 @@
   },
   {
     "id": 7,
-    "title": "",
-    "description": "Project on progress",
-    "techStack": [],
+    "title": "Terakoya Academia Inc",
+    "description": "This project was an inhouse project for Terakoya Academia Inc. Firstly, it was built in Django later migrated into php.",
+    "techStack": ["Python", "Django", "React.Js" ],
     "githubLink": "#",
-    "externalLink": "#",
+    "externalLink": "https://www.terakoya-academia.com/welcome",
     "backgroundImage": "#"
   }
 ]
