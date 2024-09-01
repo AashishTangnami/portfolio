@@ -77,8 +77,8 @@ export default function About() {
                             when I was trying to solve a problem in my previous company. I have been working on AI and Data Science projects since then.
                         </p>
                         <p className="mb-4 text-md sm:text-lg md:text-md leading-relaxed">
-                            As a curious, inovative individual and problem-solver, I thrive at the intersection of data nd technolgoy. With a passion for uncovering hidden insights and a drive to crafrt scalable solutions, I&aps;m always ready to dive into the next complex challenge.
-                            Armed with a growth mindset and an infectious enthusiasm, I&aps;m dedicated to harnessing the power of data to fuel informed decisions and build cutting-edge software that drives real impact.
+                            As a curious, innovative individual and problem-solver, I thrive at the intersection of data and technology. With a passion for uncovering hidden insights and a drive to craft scalable solutions, I&apos;m always ready to dive into the next complex challenge.
+                            Armed with a growth mindset and an infectious enthusiasm, I&apos;m dedicated to harnessing the power of data to fuel informed decisions and build cutting-edge software that drives real impact.
                         </p>
                     </div>
                     
