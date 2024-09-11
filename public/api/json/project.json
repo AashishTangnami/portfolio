@@ -11,9 +11,9 @@
   },
   {
     "id": 2,
-    "title": "",
-    "description": "Project on progress",
-    "techStack": [],
+    "title": "Brain Tumor Classifier",
+    "description": "Brain Tumor Segmentation using Pytorch",
+    "techStack": ["Python", "Pytorch", "CNN", "Streamlit"],
     "githubLink": "#",
     "externalLink": "#",
     "backgroundImage": ""
