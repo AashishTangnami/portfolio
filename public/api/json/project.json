@@ -12,10 +12,10 @@
   {
     "id": 2,
     "title": "Brain Tumor Classifier",
-    "description": "Brain Tumor Segmentation using Pytorch",
-    "techStack": ["Python", "Pytorch", "CNN", "Streamlit"],
-    "githubLink": "#",
-    "externalLink": "#",
+    "description": "Brain Tumor Detection by fine tuning a pre-trained model Efficientnet_V2_S using Pytorch with streamlit as frontend.",
+    "techStack": ["Python", "Pytorch", "HuggingFace", "Streamlit"],
+    "githubLink": "https://github.com/AashishTangnami/BrainTumorDetection",
+    "externalLink": "https://huggingface.co/spaces/AashishTangnami/Brain_Tumor_Detection",
     "backgroundImage": ""
   },
   {
