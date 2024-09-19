@@ -20,9 +20,9 @@
   },
   {
     "id": 3,
-    "title": "",
+    "title": "Data Engineering: ETL Pipeline",
     "description": "Project on progress",
-    "techStack": [],
+    "techStack": ["Python", "Pandas", "PostgreSQL"],
     "githubLink": "#",
     "externalLink": "#",
     "backgroundImage": ""
