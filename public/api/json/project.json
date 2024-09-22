@@ -21,9 +21,9 @@
   {
     "id": 3,
     "title": "Data Engineering: ETL Pipeline",
-    "description": "Project on progress",
-    "techStack": ["Python", "Pandas", "PostgreSQL"],
-    "githubLink": "#",
+    "description": "A production ready ETL pipeline using Apache Spark on Databricks to process and transform data from DataLake or Delta Lake.",
+    "techStack": ["Python", "Pandas", "PySpark", "DataBricks", "Jupyter Notebook"],
+    "githubLink": "https://github.com/AashishTangnami/Apache-Spark-Data-Engineering",
     "externalLink": "#",
     "backgroundImage": ""
   },
