@@ -28,7 +28,7 @@
     "backgroundImage": ""
   },
   {
-    "id": 4,
+    "id": 7,
     "title": "",
     "description": "Project on progress",
     "techStack": [],
@@ -55,7 +55,7 @@
     "backgroundImage": "#"
   },
   {
-    "id": 7,
+    "id": 4,
     "title": "Terakoya Academia Inc",
     "description": "This project was an inhouse project for Terakoya Academia Inc. Firstly, it was built in Django later migrated into php.",
     "techStack": ["Python", "Django", "React.Js" ],
