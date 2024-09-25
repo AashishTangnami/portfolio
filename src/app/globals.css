@@ -48,17 +48,17 @@ body {
   bottom: 0;
   width: 0;
   height: 2px; /* Underline height */
-  background-color: #21c156; /* Underline color (tailwind red-400) */
+  background-color: #3b82f6; /* Underline color (tailwind red-400) */
   transition: width 0.3s ease; /* Animation duration and easing */
 }
 
 .nav-link:hover::after {
   width: 100%;
-  color: #21c156;
+  color: #3b82f6;
 }
 
 .word-link:hover {
-  color: #21c156; /* Change text color on hover */
+  color: #3b82f6; /* Change text color on hover */
 }
 .fade-enter {
   opacity: 0;
