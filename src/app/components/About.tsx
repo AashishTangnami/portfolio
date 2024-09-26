@@ -73,7 +73,7 @@ export default function About() {
                 <div className="items-center justify-center mx-auto">
                     <div className="md:w-3/4 ml-8">
                         <p className="mb-4 text-md sm:text-lg md:text-md leading-relaxed">
-                            Hello! I am a data scientist and a software engineer. I have almost 2 years of software engineering experience. I got post graduate degree in AI and Data Scinence in 2024. 
+                            Hello! I am a data scientist and a software engineer. I have almost 2 years of software engineering experience. I got post graduate degree in AI and Data Science in 2024. 
                             when I was trying to solve a problem in my previous company. I have been working on AI and Data Science projects since then.
                         </p>
                         <p className="mb-4 text-md sm:text-lg md:text-md leading-relaxed">

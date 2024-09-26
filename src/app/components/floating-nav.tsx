@@ -5,7 +5,6 @@ import {
   IconBrandGmail,
 
 } from "@tabler/icons-react";
-import Image from "next/image";
 import { FloatingDock } from "./ui/floatingDock";
 
 export function FloatingDockDemo() {

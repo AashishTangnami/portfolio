@@ -47,7 +47,7 @@ export default function Experience(){
               key={idx}
               className={`${
                 activeTabId === idx
-                  ? 'text-green-500 border-green-500'
+                  ? 'text-blue-500 border-blue-500'
                   : 'text-gray-500 border-gray-300'
               } py-2 px-4 border-l-4 md:border-l-0 focus:outline-none`}
               onClick={() => setActiveTabId(idx)}
@@ -71,7 +71,7 @@ export default function Experience(){
               <div>
                 <h3 className="text-2xl font-semibold">
                   {jobs.position}{' '}
-                  <span className="text-green-500">
+                  <span className="text-blue-500">
                     @ <a href={jobs.url} target="_blank" rel="noopener noreferrer">{jobs.company}</a>
                   </span>
                 </h3>
