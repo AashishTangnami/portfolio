@@ -20,10 +20,7 @@ export default function Home() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  // const variants = {
-  //   open: { opacity: 1, x: 0 },
-  //   closed: { opacity: 0, x: "-100%" },
-  // }
+
   const handleClickOutside = useCallback((e: MouseEvent) => {
     if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
       setIsMenuOpen(false);

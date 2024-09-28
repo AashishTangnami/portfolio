@@ -1,9 +1,7 @@
-import { Button } from "./ui/Button";
-// src/components/Wrapper.tsx
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { FloatingDockDemo } from "./floating-nav";
-import { IconMessageChatbot, IconArrowUpCircle } from "@tabler/icons-react";
+import { IconMessageChatbot } from "@tabler/icons-react";
 import Footer from "./Footer";
 
 const Contact = () => {
