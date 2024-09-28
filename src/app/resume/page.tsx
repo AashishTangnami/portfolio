@@ -5,7 +5,6 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { IoArrowBack } from 'react-icons/io5';
-import { cache } from 'react'
 
 // Dynamically import FaFilePdf icon to reduce initial bundle size
 const FaFilePdf = dynamic(() => import('react-icons/fa').then(mod => mod.FaFilePdf), { ssr: false });

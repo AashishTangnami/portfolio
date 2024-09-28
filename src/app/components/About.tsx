@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion';
-import { FaPython, FaDocker, FaGit, FaNodeJs, FaJsSquare, FaGitAlt } from 'react-icons/fa';
+import { FaPython, FaDocker, FaJsSquare, FaGitAlt } from 'react-icons/fa';
 import { 
     SiTensorflow, 
     SiPytorch, 
-    SiJavascript, 
     SiRust, 
     SiTypescript, 
     SiNextdotjs, 
