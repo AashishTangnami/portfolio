@@ -20,7 +20,7 @@ export default function Intro() {
 		className: "text-blue-500 dark:text-blue-500",
 	  },
 	  {
-		text: "Scientist",
+		text: "Professional",
 		className: "text-blue-500 dark:text-blue-500",
 	  },
   ];
@@ -36,7 +36,7 @@ export default function Intro() {
                   Welcome to my portfolio! <br></br>
 				  I am a dedicated professional in the fields of <b className="text-blue-500 dark:text-blue-500">
             AI and software engineering</b>, <br></br>
-                  committed to delivering high-quality solutions and driving innovation.<br></br>I specialize in <strong className="text-blue-500 dark:text-blue-500">Data Science.</strong>
+                  committed to delivering high-quality solutions and driving innovation.<br></br>I specialize in <strong className="text-blue-500 dark:text-blue-500">Data Engineering.</strong>
                 </p>
               </div>
               <div className="lg:w-2/5 flex justify-center">

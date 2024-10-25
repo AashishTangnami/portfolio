@@ -1,117 +1,153 @@
+'use client';
+
+import React from 'react';
 import { motion } from 'framer-motion';
 import { FaPython, FaDocker, FaJsSquare, FaGitAlt } from 'react-icons/fa';
-import { 
-    SiTensorflow, 
-    SiPytorch, 
-    SiRust, 
-    SiTypescript, 
-    SiNextdotjs, 
-    SiMongodb, 
-    SiKubernetes, 
-    SiNumpy, 
-    SiFastapi, 
-    SiFlask, 
+import {
+    SiTensorflow,
+    SiPytorch,
+    SiRust,
+    SiTypescript,
+    SiNextdotjs,
+    SiMongodb,
+    SiKubernetes,
+    SiNumpy,
+    SiFastapi,
+    SiFlask,
     SiJupyter,
-    SiSqlite, 
-    SiR, 
-    SiPandas, 
-    SiMetasploit, 
-    SiPlotly, 
-    SiScikitlearn} from 'react-icons/si';
+    SiSqlite,
+    SiR,
+    SiPandas,
+    SiMetasploit,
+    SiPlotly,
+    SiScikitlearn
+} from 'react-icons/si';
 
+interface Skill {
+    name: string;
+    icon: React.ElementType;
+}
+
+interface SkillRowProps {
+    skills: Skill[];
+    direction?: 'left' | 'right';
+    speed?: number;
+}
+
+const SkillRow: React.FC<SkillRowProps> = ({ skills, direction = 'left', speed = 50 }) => {
+    return (
+        <div className="flex overflow-hidden w-full py-4">
+            <motion.div
+                className="flex gap-8 whitespace-nowrap"
+                animate={{
+                    x: direction === 'left' ? ['0%', '-50%'] : ['-50%', '0%']
+                }}
+                transition={{
+                    duration: speed,
+                    repeat: Infinity,
+                    ease: 'linear',
+                    repeatType: "loop"
+                }}
+            >
+                {[...skills, ...skills].map((skill, index) => (
+                    <div
+                        key={`${skill.name}-${index}`}
+                        className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm"
+                    >
+                        <skill.icon className="text-2xl text-blue-600" />
+                        <span className="text-sm font-medium">{skill.name}</span>
+                    </div>
+                ))}
+            </motion.div>
+        </div>
+    );
+};
+
+const SKILLS_DATA = {
+    row1: [
+        { name: 'Python', icon: FaPython },
+        { name: 'JavaScript', icon: FaJsSquare },
+        { name: 'TypeScript', icon: SiTypescript },
+        { name: 'Rust', icon: SiRust },
+        { name: 'R', icon: SiR },
+        { name: 'Next.js', icon: SiNextdotjs },
+        { name: 'FastAPI', icon: SiFastapi },
+        { name: 'Flask', icon: SiFlask }
+    ],
+    row2: [
+        { name: 'PyTorch', icon: SiPytorch },
+        { name: 'TensorFlow', icon: SiTensorflow },
+        { name: 'Scikit-learn', icon: SiScikitlearn },
+        { name: 'Pandas', icon: SiPandas },
+        { name: 'NumPy', icon: SiNumpy },
+        { name: 'Jupyter', icon: SiJupyter },
+        { name: 'Plotly', icon: SiPlotly },
+        { name: 'Matplotlib', icon: SiMetasploit }
+    ],
+    row3: [
+        { name: 'Docker', icon: FaDocker },
+        { name: 'Kubernetes', icon: SiKubernetes },
+        { name: 'Git', icon: FaGitAlt },
+        { name: 'MongoDB', icon: SiMongodb },
+        { name: 'SQLite', icon: SiSqlite }
+    ]
+};
+
+const ScrollingSkills: React.FC = () => {
+    return (
+        <div className="w-full space-y-8 py-12 bg-gray-50/50 rounded-xl">
+            <SkillRow skills={SKILLS_DATA.row1} direction="right" speed={25} />
+            <SkillRow skills={SKILLS_DATA.row2} direction="left" speed={20} />
+            <SkillRow skills={SKILLS_DATA.row3} direction="right" speed={25} />
+        </div>
+    );
+};
 
 export default function About() {
- // The Design of the About me will be changed
-    const skills: { [key: string]: { name: string; icon: JSX.Element }[] } = {
-        "Programming Languages": [
-            { name: 'Python', icon: <FaPython /> },
-            { name: 'JavaScript (ES6+)', icon: <FaJsSquare /> },
-            { name: 'Rust', icon: <SiRust /> },
-            { name: 'TypeScript', icon: <SiTypescript /> },
-            { name: 'R', icon: <SiR /> }
-        ],
-        "Machine Learning": [
-            { name: 'PyTorch', icon: <SiPytorch /> },
-            { name: 'TensorFlow', icon: <SiTensorflow /> },
-            { name: 'Keras', icon: <SiPytorch /> },
-            { name: 'scikit-learn', icon: <SiScikitlearn /> },
-          
-        ],
-        "DevOps": [
-            { name: 'Docker', icon: <FaDocker /> },
-            { name: 'Kubernetes', icon: <SiKubernetes /> },
-            { name: 'CI/CD', icon: <FaGitAlt /> }
-        ],
-        "Databases": [
-            { name: 'SQL', icon: <SiSqlite /> },
-            { name: 'NoSQL', icon: <SiMongodb /> },
-        ],
-        "Data Analysis & Visualization": [
-            {name: 'Pandas', icon: <SiPandas />},
-            {name: 'Numpy', icon: <SiNumpy />},
-            {name: 'Matplotlib', icon: <SiMetasploit />},
-            // {name: 'Seaborn', icon: <SiSeaborn />},
-            {name: 'Plotly', icon: <SiPlotly />},
-    
-        ],
-        "Frameworks": [
-            { name: 'Next.js', icon: <SiNextdotjs /> },
-            { name: 'FastAPI', icon: <SiFastapi /> },
-            { name: 'Flask', icon: <SiFlask /> },
-            { name: 'Jupyter', icon: <SiJupyter /> }
-        ]
-    };
-
-
     return (
-        
-        <section id="about" className="bg-primary text-black border-b-2 py-20">
-            <div className="container mx-auto px-4 py-12">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl text-center font-semibold mb-8">About Me</h2>
+        <section 
+            id="about" 
+            className="bg-primary text-black border-b-2 py-20"
+            aria-label="About Me Section"
+        >
+            <div className="container mx-auto px-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl text-center font-semibold mb-12">
+                    About Me
+                </h2>
 
-                <div className="items-center justify-center mx-auto">
-                    <div className="md:w-3/4 ml-8">
-                        <p className="mb-4 text-md sm:text-lg md:text-md leading-relaxed">
-                            Hello! I am a data scientist and a software engineer. I have almost 2 years of software engineering experience. I got post graduate degree in AI and Data Science in 2024. 
-                            when I was trying to solve a problem in my previous company. I have been working on AI and Data Science projects since then.
+                <div className="max-w-4xl mx-auto mb-16">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="space-y-6"
+                    >
+                        <p className="text-md sm:text-lg md:text-md leading-relaxed">
+                            Hello! I am a Data Engineer and Software Engineer with nearly 3 years of experience 
+                            in developing scalable, data-driven applications. In 2024, I earned a Ontario College 
+                            Graduate Certificate in Artificial Intelligence and Data Science nominated in Dean&apos;s List. 
+                            Throughout my career, I have contributed to AI, Data Engineering, and software projects, 
+                            solving real-world problems and optimizing performance for various industries.
                         </p>
-                        <p className="mb-4 text-md sm:text-lg md:text-md leading-relaxed">
-                            As a curious, innovative individual and problem-solver, I thrive at the intersection of data and technology. With a passion for uncovering hidden insights and a drive to craft scalable solutions, I&apos;m always ready to dive into the next complex challenge.
-                            Armed with a growth mindset and an infectious enthusiasm, I&apos;m dedicated to harnessing the power of data to fuel informed decisions and build cutting-edge software that drives real impact.
+                        <p className="text-md sm:text-lg md:text-md leading-relaxed">
+                            I am passionate about leveraging data and technology to uncover insights and build 
+                            innovative, scalable solutions. With a growth mindset and enthusiasm for solving 
+                            complex challenges, I am committed to using data to drive impact through cutting-edge 
+                            software development and informed decision-making.
                         </p>
-                    </div>
-                    
+                    </motion.div>
                 </div>
-                <p className="mt-8 mb-4 text-lg md:text-xl font-semibold mx-auto text-center">Technologies I love to work with:</p>
-                
-                <div className="grid grid-rows-1 xs:grid-cols-2 md:grid-cols-6 gap-8">
-                    {Object.keys(skills).map((category, index) => (
-                        <div key={index} className="flex flex-col items-center">
-                            <h3 className="text-lg font-semibold mb-4">{category}</h3>
-                            <ul className="grid gap-4 list-none text-base sm:text-sm md:text-sm">
-                            {skills[category].map((skill, i) => (
-                                    <motion.li
-                                        key={i}
-                                        className="flex items-center space-x-2 px-2 py-2 bg-slate-200 rounded-md"
-                                        whileHover={{ scale: 1.1, boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)" }}
-                                        whileTap={{ scale: 0.95 }}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: i * 0.1 } }}
-                                    >
-                                        <motion.div
-                                            whileHover={{ rotate: 20 }}
-                                            whileTap={{ scale: 0.9 }}
-                                            className="text-xl"
-                                        >
-                                            {skill.icon}
-                                        </motion.div>
-                                        <span>{skill.name}</span>
-                                    </motion.li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
-                </div>
+
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                    <h3 className="text-lg md:text-xl font-semibold text-center mb-8">
+                        Technologies I work with:
+                    </h3>
+                    <ScrollingSkills />
+                </motion.div>
             </div>
         </section>
     );
