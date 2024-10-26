@@ -39,6 +39,7 @@ const SkillRow: React.FC<SkillRowProps> = ({ skills, direction = 'left', speed =
         <div className="flex overflow-hidden w-full py-4">
             <motion.div
                 className="flex gap-8 whitespace-nowrap"
+                // whileHover={{ x: 0 }}
                 animate={{
                     x: direction === 'left' ? ['0%', '-50%'] : ['-50%', '0%']
                 }}
@@ -89,6 +90,10 @@ const SKILLS_DATA = {
         { name: 'Kubernetes', icon: SiKubernetes },
         { name: 'Git', icon: FaGitAlt },
         { name: 'MongoDB', icon: SiMongodb },
+        { name: 'SQLite', icon: SiSqlite },
+        { name: 'Kubernetes', icon: SiKubernetes },
+        { name: 'Git', icon: FaGitAlt },
+        { name: 'MongoDB', icon: SiMongodb },
         { name: 'SQLite', icon: SiSqlite }
     ]
 };
@@ -124,7 +129,7 @@ export default function About() {
                     >
                         <p className="text-md sm:text-lg md:text-md leading-relaxed">
                             Hello! I am a Data Engineer and Software Engineer with nearly 3 years of experience 
-                            in developing scalable, data-driven applications. In 2024, I earned a Ontario College 
+                            in developing scalable, data-driven applications. In 2024, I earned the Ontario College 
                             Graduate Certificate in Artificial Intelligence and Data Science nominated in Dean&apos;s List. 
                             Throughout my career, I have contributed to AI, Data Engineering, and software projects, 
                             solving real-world problems and optimizing performance for various industries.
