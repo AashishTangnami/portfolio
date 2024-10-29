@@ -47,11 +47,11 @@
   },
   {
     "id": 6,
-    "title": "",
-    "description": "Project on progress",
-    "techStack": [],
-    "githubLink": "#",
-    "externalLink": "#",
+    "title": "Leetcode",
+    "description": "This is a repository of my solutions to LeetCode problems. I have solved 50+ SQL problems and still solving.",
+    "techStack": ["SQL", "Python"],
+    "githubLink": "https://github.com/AashishTangnami/leetcode",
+    "externalLink": "https://leetcode.com/u/AashishTangnami/",
     "backgroundImage": "#"
   },
   {
