@@ -39,7 +39,7 @@
   {
     "id": 5,
     "title": "Full Stack ETL Pipeline",
-    "description": "Project on progress",
+    "description": "Solving the problem of data silos by building a full stack ETL pipeline to automate the process of ETL to downstreaming.",
     "techStack": ["Python", "PySpark", "SQL", "AWS"],
     "githubLink": "#",
     "externalLink": "#",
