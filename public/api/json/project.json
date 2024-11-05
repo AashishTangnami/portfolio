@@ -38,29 +38,20 @@
   },
   {
     "id": 5,
-    "title": "Full Stack ETL Pipeline",
-    "description": "Solving the problem of data silos by building a full stack ETL pipeline to automate the process of ETL to downstreaming.",
-    "techStack": ["Python", "PySpark", "SQL", "AWS"],
+    "title": "ETL Pipeline",
+    "description": "Solving the problem of data silos by building a scalable ETL pipeline to automate the process of ETL to downstreaming.",
+    "techStack": ["Rust","Docker", "PostgreSQL"],
     "githubLink": "#",
     "externalLink": "#",
     "backgroundImage": "#"
   },
   {
     "id": 6,
-    "title": "Leetcode",
-    "description": "This is a repository of my solutions to LeetCode problems. I have solved 50+ SQL problems and still solving.",
+    "title": "Leetcode + HackerRank Solutions",
+    "description": "This is a repository of my solutions to LeetCode/ Hacker Rank problems. I have solved 50+ SQL problems and still solving.",
     "techStack": ["SQL", "Python"],
     "githubLink": "https://github.com/AashishTangnami/leetcode",
     "externalLink": "https://leetcode.com/u/AashishTangnami/",
-    "backgroundImage": "#"
-  },
-  {
-    "id": 7,
-    "title": "",
-    "description": "Project on progress",
-    "techStack": [],
-    "githubLink": "#",
-    "externalLink": "#",
     "backgroundImage": "#"
   }
 ]
