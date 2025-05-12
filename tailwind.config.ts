@@ -1,19 +1,18 @@
-import exp from "constants";
 import type { Config } from "tailwindcss";
-
 
 const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
- 
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: 'class', // Enable dark mode with class strategy
   theme: {
     screens: {
       xxs: "320px",
@@ -25,12 +24,12 @@ const config: Config = {
     },
     fontFamily: {
       primary: "var(--font-jetbrainsMono)",
-
+      sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
     },
     extend: {
 
       colors:{
-        primary: '#f3f3f39',
+        primary: '#f3f3f3',
         secondary: '#424242',
         text_primary: '#f7f7f7',
         primarycard : "#686868",
@@ -74,15 +73,15 @@ const config: Config = {
 
         // #EAE7DC, #D8C3A5, #8E8D8A, #E98074, #E85A4F -> MINIMAL AND WARM
         // #19181A, #479761, #CEBC81, #A16E83, #B19F9E -> MODERN AND MINIMAL
-      
+
         // accent:{
         //   DEFAULT : '#00ff99',
         //   hover: '#00e187', for text - >"#FAFAFA",
-      
+
         // }, '#141010', primarycard : "#f2f2f2",
         // #1995AD, #A1D6E2, #F1F1F2, #C4DFE6, #66A5AD -> OCEANIC
 
-        
+
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
