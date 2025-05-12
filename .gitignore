@@ -27,6 +27,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
@@ -34,3 +35,17 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# blog uploads
+/public/uploads/
+/public/blog/uploads/
+/public/blog/images/
+/public/blog/temp/
+
+# database
+/prisma/dev.db
+/prisma/dev.db-journal
+
+# temporary files
+.temp/
+.cache/

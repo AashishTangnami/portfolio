@@ -1,0 +1,99 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String     @id @default(uuid())
+  email         String     @unique
+  passwordHash  String
+  name          String
+  role          String     @default("user") // "admin" or "user"
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime?  @updatedAt
+  posts         BlogPost[]
+  sessions      Session[]
+}
+
+model BlogPost {
+  id          String     @id @default(uuid())
+  title       String
+  slug        String     @unique
+  excerpt     String
+  content     String
+  coverImage  String?
+  publishedAt DateTime   @default(now())
+  updatedAt   DateTime?  @updatedAt
+
+  // Author relation (replaces authorName and authorImage)
+  author      User       @relation(fields: [authorId], references: [id])
+  authorId    String
+
+  // Keep these for backward compatibility if needed
+  authorName  String?
+  authorImage String?
+
+  categories  Category[] @relation("BlogPostToCategory")
+  tags        Tag[]      @relation("BlogPostToTag")
+}
+
+model Tag {
+  id    String     @id @default(uuid())
+  name  String     @unique
+  slug  String     @unique
+  posts BlogPost[] @relation("BlogPostToTag")
+}
+
+model Category {
+  id    String     @id @default(uuid())
+  name  String     @unique
+  slug  String     @unique
+  posts BlogPost[] @relation("BlogPostToCategory")
+}
+
+model Project {
+  id            String    @id @default(uuid())
+  title         String
+  slug          String    @unique
+  description   String
+  content       String    @db.Text
+  imageUrl      String?
+  demoUrl       String?
+  githubUrl     String?
+  technologies  String[]
+  featured      Boolean   @default(false)
+  order         Int       @default(0)
+  publishedAt   DateTime  @default(now())
+  updatedAt     DateTime? @updatedAt
+}
+
+model Experience {
+  id            String    @id @default(uuid())
+  company       String
+  position      String
+  location      String?
+  startDate     DateTime
+  endDate       DateTime?
+  current       Boolean   @default(false)
+  description   String    @db.Text
+  responsibilities String[]
+  url           String?
+  technologies  String[]
+  order         Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime? @updatedAt
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
