@@ -87,7 +87,7 @@ export async function PUT(
         excerpt: body.excerpt || '',
         content: body.content,
         coverImage: body.coverImage || '',
-        published: body.published !== false,
+        publishedAt: body.published !== false ? new Date() : undefined,
         updatedAt: new Date(),
         // Update tags if provided
         tags: body.tags || [],

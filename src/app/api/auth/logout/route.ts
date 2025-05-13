@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { deleteSession } from '@/lib/auth';
 
+// Mark this route as dynamic since it uses cookies
+export const dynamic = 'force-dynamic';
+
 export async function POST() {
   try {
     // Delete the session from database and clear cookie

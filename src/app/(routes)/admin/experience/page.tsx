@@ -141,7 +141,7 @@ export default function ExperienceAdminPage() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-900">
-                      {formatDate(experience.startDate, 'MMM yyyy')} - {experience.current ? 'Present' : formatDate(experience.endDate, 'MMM yyyy')}
+                      {formatDate(experience.startDate, 'MMM yyyy')} - {experience.current ? 'Present' : (experience.endDate ? formatDate(experience.endDate, 'MMM yyyy') : 'N/A')}
                     </div>
                     {experience.current && (
                       <span className="px-2 py-1 text-xs bg-green-100 text-green-800 rounded">

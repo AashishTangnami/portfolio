@@ -2,6 +2,9 @@ import Link from 'next/link';
 import { requireAdmin } from '@/lib/auth';
 import LogoutButton from './components/LogoutButton';
 
+// Mark this page as dynamic since it uses cookies for authentication
+export const dynamic = 'force-dynamic';
+
 export default async function AdminDashboardPage() {
   // This will redirect to login if not authenticated
   const user = await requireAdmin();

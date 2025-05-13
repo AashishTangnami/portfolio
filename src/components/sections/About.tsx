@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { FaPython, FaDocker, FaJsSquare, FaGitAlt } from 'react-icons/fa';
 import {
     SiTensorflow,
@@ -38,47 +38,66 @@ const SkillRow: React.FC<SkillRowProps> = ({ skills, direction = 'left', speed =
     // Use useState and useEffect to control animation based on visibility
     const [isVisible, setIsVisible] = useState(false);
     const rowRef = useRef<HTMLDivElement>(null);
+    const prefersReducedMotion = useReducedMotion();
 
     useEffect(() => {
+        // Create a single IntersectionObserver instance
         const observer = new IntersectionObserver(
             (entries) => {
-                if (entries[0].isIntersecting) {
-                    setIsVisible(true);
-                } else {
-                    setIsVisible(false);
-                }
+                // Simplified condition
+                setIsVisible(entries[0].isIntersecting);
             },
             { threshold: 0.1 }
         );
 
-        if (rowRef.current) {
-            observer.observe(rowRef.current);
+        const currentRef = rowRef.current;
+
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            if (rowRef.current) {
-                observer.unobserve(rowRef.current);
+            if (currentRef) {
+                observer.unobserve(currentRef);
             }
         };
     }, []);
+
+    // Respect user preferences for reduced motion
+    const animationProps = prefersReducedMotion
+        ? { animate: { x: 0 } } // No animation for users who prefer reduced motion
+        : {
+            animate: isVisible ? {
+                x: direction === 'left' ? ['0%', '-50%'] : ['-50%', '0%']
+            } : { x: 0 },
+            transition: isVisible ? {
+                duration: speed,
+                repeat: Infinity,
+                ease: 'linear',
+                repeatType: 'loop' as const
+            } : {}
+        };
 
     return (
         <div ref={rowRef} className="flex overflow-hidden w-full py-4">
             <motion.div
                 className="flex gap-8 whitespace-nowrap"
-                animate={isVisible ? {
-                    x: direction === 'left' ? ['0%', '-50%'] : ['-50%', '0%']
-                } : { x: 0 }}
-                transition={isVisible ? {
-                    duration: speed,
-                    repeat: Infinity,
-                    ease: 'linear',
-                    repeatType: "loop"
-                } : {}}
+                {...animationProps}
             >
-                {[...skills, ...skills].map((skill, index) => (
+                {/* Render skills only once and duplicate them for the animation */}
+                {skills.map((skill, index) => (
                     <div
                         key={`${skill.name}-${index}`}
+                        className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm"
+                    >
+                        <skill.icon className="text-2xl text-blue-600 dark:text-blue-400" />
+                        <span className="text-sm font-medium text-gray-800 dark:text-gray-200">{skill.name}</span>
+                    </div>
+                ))}
+                {/* Duplicate for continuous scrolling effect */}
+                {skills.map((skill, index) => (
+                    <div
+                        key={`${skill.name}-duplicate-${index}`}
                         className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm"
                     >
                         <skill.icon className="text-2xl text-blue-600 dark:text-blue-400" />
@@ -124,10 +143,16 @@ const SKILLS_DATA = {
     ]
 };
 
-const ScrollingSkills: React.FC = () => {
-    // Memoize the component to prevent unnecessary re-renders
-    const MemoizedSkillRow = React.memo(SkillRow);
+// Memoize the SkillRow component with a custom comparison function
+const MemoizedSkillRow = React.memo(SkillRow, (prevProps, nextProps) => {
+    return (
+        prevProps.skills === nextProps.skills &&
+        prevProps.direction === nextProps.direction &&
+        prevProps.speed === nextProps.speed
+    );
+});
 
+const ScrollingSkills: React.FC = () => {
     return (
         <div className="w-full space-y-8 py-12 bg-gray-50/50 dark:bg-gray-800/50 rounded-xl">
             <MemoizedSkillRow skills={SKILLS_DATA.row1} direction="right" speed={40} />

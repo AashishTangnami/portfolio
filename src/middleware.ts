@@ -1,6 +1,41 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { jwtVerify } from 'jose';
+import logger from '@/lib/logger';
+
+/**
+ * Add security headers to a response
+ * @param response Next.js response object
+ */
+function addSecurityHeaders(response: NextResponse) {
+  const headers = response.headers;
+
+  // Prevent browsers from incorrectly detecting non-scripts as scripts
+  headers.set('X-Content-Type-Options', 'nosniff');
+
+  // Prevent embedding as iframe on other sites
+  headers.set('X-Frame-Options', 'DENY');
+
+  // XSS Protection
+  headers.set('X-XSS-Protection', '1; mode=block');
+
+  // Referrer Policy
+  headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+
+  // Permissions Policy
+  headers.set(
+    'Permissions-Policy',
+    'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+  );
+
+  // Content Security Policy in production only
+  if (process.env.NODE_ENV === 'production') {
+    headers.set(
+      'Content-Security-Policy',
+      "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://*;"
+    );
+  }
+}
 
 // Paths that require authentication
 const PROTECTED_PATHS = [
@@ -35,7 +70,12 @@ export async function middleware(request: NextRequest) {
 
   // If the path is not protected or is explicitly public, allow access
   if (!isProtectedPath || isPublicPath) {
-    return NextResponse.next();
+    const response = NextResponse.next();
+
+    // Add security headers to all responses
+    addSecurityHeaders(response);
+
+    return response;
   }
 
   // Get the token from the request cookies or headers
@@ -55,35 +95,41 @@ export async function middleware(request: NextRequest) {
 
     // Ensure JWT_SECRET is set
     if (!JWT_SECRET) {
-      console.error('ERROR: JWT_SECRET is not set in environment variables');
+      logger.error('JWT_SECRET is not set in environment variables');
       const url = new URL('/admin/login', request.url);
       return NextResponse.redirect(url);
     }
 
-    // Only log in development
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('Middleware verifying token with JWT_SECRET');
-    }
+    // Log token verification (debug level will only show in development)
+    logger.debug('Middleware verifying token with JWT_SECRET');
 
     // Verify the token
     await jwtVerify(token, new TextEncoder().encode(JWT_SECRET));
 
     // Token is valid, allow access
-    return NextResponse.next();
+    const response = NextResponse.next();
+
+    // Add security headers
+    addSecurityHeaders(response);
+
+    return response;
   } catch (error) {
     // Token is invalid, redirect to login
-    console.error('Token verification failed:', error);
+    logger.error('Token verification failed:', error);
     const url = new URL('/admin/login', request.url);
     return NextResponse.redirect(url);
   }
 }
 
-// Configure the middleware to run only on specific paths
+// Configure the middleware to run on all paths
 export const config = {
   matcher: [
-    '/admin/:path*',
-    '/api/blog/:path*',
-    '/api/projects/:path*',
-    '/api/experience/:path*',
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    '/((?!_next/static|_next/image|favicon.ico).*)',
   ],
 };

@@ -7,11 +7,19 @@ export function cn(...inputs: ClassValue[]) {
 
 /**
  * Format a date string into a human-readable format
- * @param dateString - ISO date string
- * @returns Formatted date string (e.g., "February 15th, 2023")
+ * @param dateString - ISO date string or Date object
+ * @param format - Optional format string ('MMM yyyy' for short format)
+ * @returns Formatted date string (e.g., "February 15th, 2023" or "Feb 2023")
  */
-export function formatDate(dateString: string): string {
-  const date = new Date(dateString);
+export function formatDate(dateString: string | Date, format?: string): string {
+  const date = dateString instanceof Date ? dateString : new Date(dateString);
+
+  if (format === 'MMM yyyy') {
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+    });
+  }
 
   return date.toLocaleDateString('en-US', {
     year: 'numeric',

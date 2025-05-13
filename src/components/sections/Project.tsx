@@ -5,6 +5,7 @@ import { FaFolderOpen } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { ProjectData } from '@/types';
 import { IconBrandGithub } from '@tabler/icons-react';
+import { fetchWithCache } from '@/lib/fetcher';
 
 export default function Project() {
   const GRID_LIMIT = 6; // Default for larger screens
@@ -16,33 +17,16 @@ export default function Project() {
 
 
   useEffect(() => {
-    // Use a cached version of the data if possible
-    const cachedData = sessionStorage.getItem('projectData');
-
-    if (cachedData) {
+    // Use our optimized fetcher with built-in caching
+    const fetchProjects = async () => {
       try {
-        const parsedData = JSON.parse(cachedData);
-        setProjectData(parsedData);
-        return; // Skip the fetch if we have cached data
-      } catch (e) {
-        console.error('Error parsing cached project data:', e);
-        // Continue with fetch if parsing fails
-      }
-    }
+        // Fetch from real API endpoint with caching
+        const data = await fetchWithCache('/api/projects');
 
-    // Fetch from real API endpoint
-    fetch('/api/projects')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
         // Extract the 'projects' array from the data object
         if (data && Array.isArray(data.projects)) {
           // Map the database projects to the expected format
-          const formattedProjects = data.projects.map(project => ({
+          const formattedProjects = data.projects.map((project: any) => ({
             id: project.id,
             title: project.title,
             description: project.description,
@@ -51,37 +35,34 @@ export default function Project() {
             externalLink: project.demoUrl || project.externalLink || '',
             backgroundImage: project.imageUrl || project.backgroundImage || ''
           }));
-          console.log('Formatted projects:', formattedProjects);
+
           setProjectData(formattedProjects);
-          // Cache the data for future use
-          sessionStorage.setItem('projectData', JSON.stringify(formattedProjects));
         } else {
           console.warn('Projects data is not in the expected format');
-          // Optionally set an empty array or handle the error appropriately
           setProjectData([]);
         }
-      })
-      .catch(error => {
+      } catch (error) {
         console.error('Error loading projects from API:', error);
-        // Fallback to JSON data if API fails
-        fetch('/api/json/project.json')
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.json();
-          })
-          .then(data => {
-            if (data && Array.isArray(data.projects)) {
-              console.log('Using fallback JSON data for projects');
-              setProjectData(data.projects);
-            } else {
-              console.warn('Fallback projects data is not in the expected format');
-              setProjectData([]);
-            }
-          })
-          .catch(jsonError => console.error('Error loading fallback JSON:', jsonError));
-      });
+
+        try {
+          // Fallback to JSON data if API fails
+          const fallbackData = await fetchWithCache('/api/json/project.json');
+
+          if (fallbackData && Array.isArray(fallbackData.projects)) {
+            console.log('Using fallback JSON data for projects');
+            setProjectData(fallbackData.projects);
+          } else {
+            console.warn('Fallback projects data is not in the expected format');
+            setProjectData([]);
+          }
+        } catch (fallbackError) {
+          console.error('Error loading fallback JSON:', fallbackError);
+          setProjectData([]);
+        }
+      }
+    };
+
+    fetchProjects();
   }, []);
 
   useEffect(() => {
@@ -106,7 +87,6 @@ export default function Project() {
 
   // Get projects to show based on showMore state
   const projectsToShow = showMore ? projectData : projectData.slice(0, gridLimit);
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <section id="projects" className="min-h-screen bg-primary dark:bg-gray-900 flex flex-col items-center px-8 py-24 border-b-2 border-gray-200 dark:border-gray-800">

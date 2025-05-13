@@ -39,15 +39,26 @@ export async function POST(request: Request) {
     return NextResponse.json({ user }, { status: 201 });
   } catch (error) {
     console.error('Error in POST /api/users:', error);
-    
+
     // Check for duplicate email error
-    if (error.code === 'P2002' && error.meta?.target?.includes('email')) {
+    if (
+      typeof error === 'object' &&
+      error !== null &&
+      'code' in error &&
+      error.code === 'P2002' &&
+      'meta' in error &&
+      error.meta &&
+      typeof error.meta === 'object' &&
+      'target' in error.meta &&
+      Array.isArray(error.meta.target) &&
+      error.meta.target.includes('email')
+    ) {
       return NextResponse.json(
         { error: 'A user with this email already exists' },
         { status: 409 }
       );
     }
-    
+
     return NextResponse.json(
       { error: 'Failed to create user' },
       { status: 500 }

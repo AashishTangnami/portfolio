@@ -1,17 +1,16 @@
 import { NextResponse } from 'next/server';
 import { getAllPosts, createPost } from '@/lib/blog-service';
 import { slugify } from '@/lib/utils';
+import logger from '@/lib/logger';
 
 export async function GET() {
   try {
     const posts = await getAllPosts();
-
-    // Log the number of posts for debugging
-    console.log(`Retrieved ${posts.length} blog posts from database`);
+    logger.debug(`Retrieved ${posts.length} blog posts from database`);
 
     return NextResponse.json({ posts });
   } catch (error) {
-    console.error('Error in GET /api/blog:', error);
+    logger.error('Error in GET /api/blog:', error);
     return NextResponse.json(
       { error: 'Failed to fetch blog posts' },
       { status: 500 }
@@ -35,10 +34,11 @@ export async function POST(request: Request) {
 
     // Create the blog post
     const post = await createPost(body);
+    logger.debug('Blog post created successfully');
 
     return NextResponse.json({ post }, { status: 201 });
   } catch (error) {
-    console.error('Error in POST /api/blog:', error);
+    logger.error('Error in POST /api/blog:', error);
     return NextResponse.json(
       { error: 'Failed to create blog post' },
       { status: 500 }

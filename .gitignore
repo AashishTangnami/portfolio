@@ -49,3 +49,6 @@ next-env.d.ts
 # temporary files
 .temp/
 .cache/
+
+#ignore
+src/scripts/
