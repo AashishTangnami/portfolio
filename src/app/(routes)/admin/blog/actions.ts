@@ -17,7 +17,7 @@ export async function deleteBlogPost(id: string) {
 
     // Revalidate the blog posts page
     revalidatePath('/admin/blog');
-    
+
     return { success: true };
   } catch (error) {
     console.error('Error deleting blog post:', error);
@@ -50,7 +50,7 @@ export async function createBlogPost(formData: FormData) {
         excerpt: excerpt || '',
         slug,
         coverImage: coverImage || '',
-        published,
+        publishedAt: published ? new Date() : undefined,
         author: {
           connect: { id: user.id },
         },
@@ -59,7 +59,7 @@ export async function createBlogPost(formData: FormData) {
 
     // Revalidate the blog posts page
     revalidatePath('/admin/blog');
-    
+
     // Redirect to the blog post edit page
     redirect(`/admin/blog/${post.id}`);
   } catch (error) {
@@ -94,14 +94,14 @@ export async function updateBlogPost(id: string, formData: FormData) {
         excerpt: excerpt || '',
         slug,
         coverImage: coverImage || '',
-        published,
+        publishedAt: published ? new Date() : undefined,
       },
     });
 
     // Revalidate the blog posts page and the individual post page
     revalidatePath('/admin/blog');
     revalidatePath(`/blog/${slug}`);
-    
+
     return { success: true };
   } catch (error) {
     console.error('Error updating blog post:', error);

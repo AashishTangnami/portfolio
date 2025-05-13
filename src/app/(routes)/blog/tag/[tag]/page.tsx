@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { BlogPost } from '@/types';
 import Navigation from '@/components/Navigation';
 import SearchBar from '@/components/blog/SearchBar';
@@ -70,7 +69,7 @@ export default function TagPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
             <div>
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-4">
-                Posts tagged with "{tag}"
+                Posts tagged with &quot;{tag}&quot;
               </h1>
               <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
                 Browse all blog posts in this category
@@ -106,7 +105,7 @@ export default function TagPage() {
           <div className="text-center text-red-500 py-10">{error}</div>
         ) : posts.length === 0 ? (
           <div className="text-center py-10">
-            <p className="text-gray-500 dark:text-gray-400">No blog posts found with tag "{tag}".</p>
+            <p className="text-gray-500 dark:text-gray-400">No blog posts found with tag &quot;{tag}&quot;.</p>
           </div>
         ) : (
           <div className="space-y-16">

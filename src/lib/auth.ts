@@ -13,9 +13,12 @@ import { prisma } from './prisma';
 import { randomUUID } from 'crypto';
 
 // Constants
-const JWT_SECRET = process.env.JWT_SECRET || 'default_jwt_secret_for_development_only';
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET && process.env.NODE_ENV === 'production') {
+  throw new Error('JWT_SECRET environment variable must be set in production');
+}
 const COOKIE_NAME = 'auth_token';
-const TOKEN_EXPIRY = '7d'; // 7 days
+const TOKEN_EXPIRY = '24h'; // Reduced from 7 days to 24 hours for better security
 
 // Types
 export interface User {
@@ -47,12 +50,14 @@ export async function authenticateUser(email: string, password: string) {
       return { success: false, message: 'Invalid email or password' };
     }
 
-    // Create JWT payload
+    // Create JWT payload with additional security claims
     const payload = {
       sub: user.id,
       email: user.email,
       name: user.name,
       role: user.role,
+      purpose: 'access_token', // Identify token type
+      iat: Math.floor(Date.now() / 1000), // Issued at time
     };
 
     // Sign JWT
@@ -91,9 +96,9 @@ export async function authenticateUser(email: string, password: string) {
  * Create a session in the database
  */
 async function createSession(userId: string, token: string) {
-  // Calculate expiration date (7 days from now)
+  // Calculate expiration date based on TOKEN_EXPIRY (24h)
   const expiresAt = new Date();
-  expiresAt.setDate(expiresAt.getDate() + 7);
+  expiresAt.setHours(expiresAt.getHours() + 24);
 
   // Create session in database
   await prisma.session.create({
@@ -112,6 +117,10 @@ async function createSession(userId: string, token: string) {
     expires: expiresAt,
     sameSite: 'lax',
     path: '/',
+    // Add additional security headers
+    ...(process.env.NODE_ENV === 'production' && {
+      partitioned: true, // For better privacy in modern browsers
+    }),
   });
 }
 
@@ -127,11 +136,23 @@ export async function verifySession(): Promise<User | null> {
       return null;
     }
 
-    // Verify token
-    await jwtVerify(
+    // Verify token with additional security checks
+    const { payload } = await jwtVerify(
       token,
-      new TextEncoder().encode(JWT_SECRET)
+      new TextEncoder().encode(JWT_SECRET),
+      {
+        // Add clock tolerance to account for small time differences between servers
+        clockTolerance: 15, // 15 seconds
+        // Only accept HS256 algorithm
+        algorithms: ['HS256'],
+      }
     );
+
+    // Additional validation checks
+    if (!payload.sub || !payload.jti) {
+      console.warn('JWT missing required claims');
+      return null;
+    }
 
     // Check if session exists in database
     const session = await prisma.session.findUnique({

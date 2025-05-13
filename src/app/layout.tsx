@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 
 // Enhanced metadata for better SEO
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://aashishtangnami.com'),
   title: {
     template: '%s | Aashish Tangnami',
     default: 'Aashish Tangnami - Data Professional & Software Engineer',

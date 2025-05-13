@@ -5,17 +5,20 @@ import { verifySession } from '@/lib/auth';
  * API endpoint to check the current user's authentication status
  * Returns the user object if authenticated, or 401 if not
  */
+// Mark this route as dynamic since it uses cookies
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const user = await verifySession();
-    
+
     if (!user) {
       return NextResponse.json(
         { error: 'Not authenticated' },
         { status: 401 }
       );
     }
-    
+
     return NextResponse.json({ user });
   } catch (error) {
     console.error('Error checking authentication:', error);
