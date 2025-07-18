@@ -44,7 +44,8 @@ const fileVariants = {
 
 export default function ResumePage() {
   const [isMobile, setIsMobile] = useState(false);
-  const resumeUrl = "/resume.pdf";
+  const resumeUrl = "/";
+  // const resumeUrl = "/resume.pdf";
 
   // Detect mobile devices
   useEffect(() => {
