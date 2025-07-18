@@ -70,7 +70,7 @@ export default function Home() {
       <a href="#experience" className="text-black nav-link word-link">Experience</a>
       <a href="#projects" className="text-black nav-link word-link">Projects</a>
       <a href="#contact" className="text-black nav-link word-link">Contact</a>
-      <a href="/resume" className="text-black nav-link word-link border-l-4 border-slate-300 pl-8">Resume</a>
+      <a href="/#" className="text-black nav-link word-link border-l-4 border-slate-300 pl-8">Resume</a>
     </div>
     
     {/* <!-- Hamburger Icon (Visible on mobile) --> */}

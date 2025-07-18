@@ -23,3 +23,25 @@ export type ExperienceData = {
     url: string;
     responsibilities: string[];
 }
+
+export type EducationData = {
+    id: number;
+    institution: string;
+    degree: string;
+    field: string;
+    period: string;
+    location: string;
+    achievements: string[];
+}
+
+export type PersonalData = {
+    name: string;
+    title: string;
+    location: string;
+    phone: string;
+    email: string;
+    website: string;
+    linkedin: string;
+    github: string;
+    summary: string;
+}

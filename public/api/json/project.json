@@ -10,7 +10,17 @@
     "backgroundImage": ""
   },
   {
-    "id": 2,
+    "id" : 2,
+    "title": "Big Data Architecture",
+    "description": "A website to understand the architecture of HADOOP, HIVE, SPARK, and related tools.",
+    "techStack": ["JavaScript", "Python", "Hadoop", "PySpark", "Hive"],
+    "githubLink": "https://github.com/AashishTangnami/bigdata-architecture",
+    "externalLink": "https://bigdata-architecture.vercel.app",
+    "backgroundImage": ""
+
+  },
+  {
+    "id": 3,
     "title": "Brain Tumor Classifier",
     "description": "Brain Tumor Detection by fine tuning a pre-trained model Efficientnet_V2_S using Pytorch with streamlit as frontend.",
     "techStack": ["Python", "Pytorch", "HuggingFace", "Streamlit"],
@@ -19,7 +29,7 @@
     "backgroundImage": ""
   },
   {
-    "id": 3,
+    "id": 4,
     "title": "Data Engineering: ETL Pipeline",
     "description": "A production ready ETL pipeline using Apache Spark on Databricks to process and transform data from DataLake or Delta Lake.",
     "techStack": ["Python", "Pandas", "PySpark", "DataBricks", "Jupyter Notebook"],
@@ -28,16 +38,16 @@
     "backgroundImage": ""
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "Terakoya Academia Inc",
     "description": "This project was an inhouse project for Terakoya Academia Inc. Firstly, it was built in Django later migrated into php.",
     "techStack": ["Python", "Django", "React.Js" ],
     "githubLink": "#",
-    "externalLink": "https://www.terakoya-academia.com/welcome",
+    "externalLink": "https://tai.com.np",
     "backgroundImage": "#"
   },
   {
-    "id": 5,
+    "id": 6,
     "title": "ETL Pipeline",
     "description": "Solving the problem of data silos by building a scalable ETL pipeline to automate the process of ETL to downstreaming.",
     "techStack": ["Rust","Docker", "PostgreSQL"],
@@ -46,7 +56,7 @@
     "backgroundImage": "#"
   },
   {
-    "id": 6,
+    "id": 7,
     "title": "Leetcode + HackerRank Solutions",
     "description": "This is a repository of my solutions to LeetCode/ Hacker Rank problems. I have solved 50+ SQL problems and still solving.",
     "techStack": ["SQL", "Python"],
