@@ -102,7 +102,7 @@ export default function Home() {
           <a href="#experience" className="block py-4 text-black nav-link word-link">Experience</a>
           <a href="#projects" className="block py-4 text-black nav-link word-link">Projects</a>
           <a href="#contact" className="block py-4 text-black nav-link word-link">Contact</a>
-          <a href="/resume" className="block py-4 text-black nav-link word-link">Resume</a> {/* Added Resume Link */}
+          <a href="/#" className="block py-4 text-black nav-link word-link">Resume</a> {/* Added Resume Link */}
         </div>
       </>
       )}
