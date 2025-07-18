@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const jet_brain_mono = JetBrains_Mono({ 
+const jet_brain_mono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["100","200", "300", "400", "500", "600", "700", "800"],
   variable: "--font-jetbrainsMono",
@@ -11,6 +11,11 @@ const jet_brain_mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Aashish Tangnami",
   description: "Aashish Tangnami's professional website",
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
 };
 
 export default function RootLayout({
@@ -26,6 +31,6 @@ export default function RootLayout({
         {/* <Footer/> */}
         </body>
     </html>
-    
+
   );
 }
