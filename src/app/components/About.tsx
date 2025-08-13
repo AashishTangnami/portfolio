@@ -2,26 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaPython, FaDocker, FaJsSquare, FaGitAlt } from 'react-icons/fa';
-import {
-    SiTensorflow,
-    SiPytorch,
-    SiRust,
-    SiTypescript,
-    SiNextdotjs,
-    SiMongodb,
-    SiKubernetes,
-    SiNumpy,
-    SiFastapi,
-    SiFlask,
-    SiJupyter,
-    SiSqlite,
-    SiR,
-    SiPandas,
-    SiMetasploit,
-    SiPlotly,
-    SiScikitlearn
-} from 'react-icons/si';
+import { ABOUT_ICON_COMPONENTS } from '@/app/utils/icons';
 
 interface Skill {
     name: string;
@@ -39,7 +20,6 @@ const SkillRow: React.FC<SkillRowProps> = ({ skills, direction = 'left', speed =
         <div className="flex overflow-hidden w-full py-4">
             <motion.div
                 className="flex gap-8 whitespace-nowrap"
-                // whileHover={{ x: 0 }}
                 animate={{
                     x: direction === 'left' ? ['0%', '-50%'] : ['-50%', '0%']
                 }}
@@ -64,46 +44,73 @@ const SkillRow: React.FC<SkillRowProps> = ({ skills, direction = 'left', speed =
     );
 };
 
+const I = ABOUT_ICON_COMPONENTS; // shorthand
+
 const SKILLS_DATA = {
-    row1: [
-        { name: 'Python', icon: FaPython },
-        { name: 'JavaScript', icon: FaJsSquare },
-        { name: 'TypeScript', icon: SiTypescript },
-        { name: 'Rust', icon: SiRust },
-        { name: 'R', icon: SiR },
-        { name: 'Next.js', icon: SiNextdotjs },
-        { name: 'FastAPI', icon: SiFastapi },
-        { name: 'Flask', icon: SiFlask }
+    programmingLanguages: [
+        { name: 'Python', icon: I.python },
+        { name: 'JavaScript', icon: I.javascript },
+        { name: 'TypeScript', icon: I.typescript },
+        { name: 'Rust', icon: I.rust },
+        { name: 'R', icon: I.r },
+        { name: 'SQL', icon: I.sql },
+        { name: 'Java', icon: I.java },
+        { name: 'PHP', icon: I.php },
     ],
-    row2: [
-        { name: 'PyTorch', icon: SiPytorch },
-        { name: 'TensorFlow', icon: SiTensorflow },
-        { name: 'Scikit-learn', icon: SiScikitlearn },
-        { name: 'Pandas', icon: SiPandas },
-        { name: 'NumPy', icon: SiNumpy },
-        { name: 'Jupyter', icon: SiJupyter },
-        { name: 'Plotly', icon: SiPlotly },
-        { name: 'Matplotlib', icon: SiMetasploit }
+    databases: [
+        { name: 'MongoDB', icon: I.mongodb },
+        { name: 'SQLite', icon: I.sqlite },
+        { name: 'MySQL', icon: I.mysql },
+        { name: 'PostgreSQL', icon: I.postgresql },
+        { name: 'Snowflake', icon: I.snowflake },
+        { name: 'Amazon Redshift', icon: I.amazonredshift },
     ],
-    row3: [
-        { name: 'Docker', icon: FaDocker },
-        { name: 'Kubernetes', icon: SiKubernetes },
-        { name: 'Git', icon: FaGitAlt },
-        { name: 'MongoDB', icon: SiMongodb },
-        { name: 'SQLite', icon: SiSqlite },
-        { name: 'Kubernetes', icon: SiKubernetes },
-        { name: 'Git', icon: FaGitAlt },
-        { name: 'MongoDB', icon: SiMongodb },
-        { name: 'SQLite', icon: SiSqlite }
-    ]
+    cloudComputing: [
+        { name: 'AWS Glue', icon: I.awsglue },
+        { name: 'Amazon S3', icon: I.amazons3 },
+        { name: 'AWS Lambda', icon: I.awslambda },
+        { name: 'AWS Step Functions', icon: I.awsstepfunctions },
+        { name: 'Databricks', icon: I.databricks },
+        { name: 'Delta Lake', icon: I.deltalake },
+        { name: 'CloudWatch', icon: I.cloudwatch },
+        { name: 'AWS DMS', icon: I.awsdms },
+        { name: 'Bedrock', icon: I.bedrock },
+        { name: 'Snowflake', icon: I.snowflake },
+        { name: 'Databricks', icon: I.databricks },
+        { name: 'Azure Databricks', icon: I.azuredatabricks },
+        { name: 'Azure Data Factory', icon: I.azuredatafactory },
+        { name: 'Azure Data Lake Gen2', icon: I.azuredatalakegen2 },
+        { name: 'Azure Blob Storage', icon: I.azureblobstorage },
+    ],
+    orchestrationNetworking: [
+        { name: 'Kubernetes', icon: I.kubernetes },
+        { name: 'Airflow', icon: I.airflow },
+        { name: 'Kafka', icon: I.kafka },
+        { name: 'Git', icon: I.git },
+        { name: 'GitLab CI/CD', icon: I.gitlabcicd },
+        { name: 'Terraform', icon: I.terraform },
+        { name: 'Jenkins', icon: I.jenkins },
+        { name: 'Elasticsearch', icon: I.elasticsearch },
+    ],
+    machineLearning: [
+        { name: 'PyTorch', icon: I.pytorch },
+        { name: 'TensorFlow', icon: I.tensorflow },
+        { name: 'Scikit-learn', icon: I.scikitlearn },
+        { name: 'Pandas', icon: I.pandas },
+        { name: 'NumPy', icon: I.numpy },
+        { name: 'Jupyter', icon: I.jupyter },
+        { name: 'MLlib', icon: I.mllib },
+    ],
 };
 
 const ScrollingSkills: React.FC = () => {
     return (
         <div className="w-full space-y-8 py-12 bg-gray-50/50 rounded-xl">
-            <SkillRow skills={SKILLS_DATA.row1} direction="right" speed={25} />
-            <SkillRow skills={SKILLS_DATA.row2} direction="left" speed={20} />
-            <SkillRow skills={SKILLS_DATA.row3} direction="right" speed={25} />
+            <SkillRow skills={SKILLS_DATA.programmingLanguages} direction="right" speed={25} />
+            <SkillRow skills={SKILLS_DATA.databases} direction="left" speed={25} />
+            <SkillRow skills={SKILLS_DATA.cloudComputing} direction="right" speed={23} />
+            <SkillRow skills={SKILLS_DATA.orchestrationNetworking} direction="left" speed={23} />
+            <SkillRow skills={SKILLS_DATA.machineLearning} direction="right" speed={24} />
         </div>
     );
 };
@@ -128,11 +135,13 @@ export default function About() {
                         className="space-y-6"
                     >
                         <p className="text-md sm:text-lg md:text-md leading-relaxed">
-                            Hello! I am a Data Engineer and Software Engineer with nearly 3 years of experience 
-                            in developing scalable, data-driven applications. In 2024, I earned the Ontario College 
-                            Graduate Certificate in Artificial Intelligence and Data Science nominated in Dean&apos;s List. 
-                            Throughout my career, I have contributed to AI, Data Engineering, and software projects, 
-                            solving real-world problems and optimizing performance for various industries.
+                            Hello! I am a Data Engineer and Software Engineer with almost 5 years ( and counting ) of experience 
+                            in developing scalable, data-driven applications. My work spans Data Engineering and full-stack development,
+                            where I’ve consistently delivered performance-optimized systems that solve real-world problems across diverse industries.
+                            In 2024, I earned the Ontario College Graduate Certificate in Artificial Intelligence and Data Science with Dean’s List honors,
+                            further strengthening my expertise in modern data and AI technologies.
+                            
+                            
                         </p>
                         <p className="text-md sm:text-lg md:text-md leading-relaxed">
                             I am passionate about leveraging data and technology to uncover insights and build 

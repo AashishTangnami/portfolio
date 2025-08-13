@@ -86,7 +86,7 @@ const FloatingDockMobile = ({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-                className="absolute top-[-30px] px-2 py-1 bg-green-400 text-white text-xs rounded-md shadow-lg"
+                className="absolute top-[-30px] px-2 py-1 bg-slate-100 text-black text-xs rounded-md shadow-lg"
               >
                 {item.title}
               </motion.div>
@@ -113,7 +113,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden md:flex h-16 gap-4 items-end  rounded-2xl bg-gray-50 dark:bg-neutral-500 px-4 pb-3",
+        "mx-auto hidden md:flex h-16 gap-4 items-end  rounded-2xl bg-gray-50 dark:bg-neutral-900 px-4 pb-3",
         className
       )}
     >

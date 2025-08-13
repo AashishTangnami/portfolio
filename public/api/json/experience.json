@@ -1,45 +1,117 @@
 {
-"experience" : [
-  {
-   
-    "company": "Direct Global/Direct Co-ops ",
-    "position": "AI Engineer",
-    "period": "Sep 2023 - Jan 2024",
-    "url" : "",
-    "responsibilities": [
-      "Write modern, Developed a Data Entry Automation application, reducing 50% of manual work.",
-      "Adopted POM and Page Factory Architecture to build the application.",
-      "Employed best practices in API security, version control, and documentation for enhanced system robustness and maintainability.",
-      "Ensured compliance with data regulations, maintaining client data integrity.Utilized performance monitoring tools to drive continuous improvement."
-    ]
-  },
+  "experience": [
     {
-      
-      "company": "Terakoya Academia Inc",
-      "position": "Software Engineer",
-      "period": "Feburary - April 2021",
-      "url" : "",
+      "company": "American Express",
+      "position": "Data Engineer",
+      "period": "Feb 2024 – Present",
+      "location": "Toronto, ON",
+      "url": "",
       "responsibilities": [
-        "Write modern, performant, maintainable code for a diverse array of client and internal projects",
-        "Work with a variety of different languages, platforms, frameworks, and content management systems such as JavaScript, TypeScript, Gatsby, React, Craft, WordPress, Prismic, and Netlify",
-        "Led the re-development of a KPI monitoring web-based application, transitioning from VBA to Python, Tornado, AngularJS and Elasticsearch.",
-        "Adopted SOLID principles and Agile methodology improving software maintainability.",
-        "Conceived and critically evaluated test routines using SonarQube.",
-        "Deployed the system as staging on a serverless platform like Amazon’s Elastic Container Services (ECS), and Elastic Compute Cloud (EC2) by utilizing Docker and CI/CD pipeline."
+        "Developed and managed scalable ETL/ELT pipelines using AWS Glue and Databricks to process billions of transactional records daily across payments, credit risk, and fraud domains.",
+        "Ingested structured, semi-structured, and unstructured data from 20+ upstream sources including Kafka, APIs, SFTP, and relational databases into Amazon S3 and Snowflake.",
+        "Built modular PySpark notebooks and Delta Lake pipelines in Databricks to cleanse, transform, and join massive datasets with 40% improved runtime efficiency.",
+        "Orchestrated end-to-end workflows using AWS Step Functions, Glue Workflows, and Databricks Jobs, automating over 95% of daily pipeline executions.",
+        "Created CDC-based data ingestion using AWS DMS and Spark Structured Streaming for near-real-time updates of credit usage and fraud signals.",
+        "Designed and deployed Snowflake data models with fact/dimension structures supporting customer insights, marketing attribution, and delinquency tracking.",
+        "Tuned Snowflake performance using materialized views, result caching, clustering keys, and warehouse scaling, reducing complex query times by 60%.",
+        "Integrated with fraud analytics teams to provision model-ready features and historical training data for real-time fraud scoring pipelines.",
+        "Built and deployed LLM-powered chatbot prototypes for internal teams using AWS Bedrock and Databricks ML Runtime, accelerating case triage processes.",
+        "Enforced enterprise data governance with encryption, RBAC, data masking, and column-level security across Snowflake and S3 storage layers.",
+        "Maintained lineage and metadata tracking using AWS Glue Data Catalog, Amundsen, and dbt docs, aiding audit and compliance processes.",
+        "Supported PCI-DSS, GDPR, and SOX compliance by ensuring secure data pipelines and complete logging of access, data movement, and transformations.",
+        "Automated CI/CD deployments using Terraform, GitLab CI/CD, and Snowflake change scripts, reducing release times by 70%.",
+        "Conducted anomaly detection on card usage and payments using SQL-based outlier detection and Spark MLlib models.",
+        "Collaborated with BI teams to deliver 30+ KPIs via Power BI dashboards for customer churn, usage trends, and merchant performance.",
+        "Reduced S3 storage costs by 35% through Parquet conversion, partition pruning, and intelligent tiering of infrequently accessed data.",
+        "Used Amazon CloudWatch and Splunk to monitor job health, set alarms, and build dashboards that improved failure detection by 80%.",
+        "Trained and mentored 4 junior engineers on Databricks, Snowflake best practices, and Python data engineering standards.",
+        "Participated in Agile ceremonies and cross-functional planning sessions, achieving 98% sprint delivery success across major initiatives."
+      ],
+      "techStack": [
+        "AWS Glue", "Amazon S3", "AWS Lambda", "AWS Step Functions", "Amazon Redshift", "Snowflake", "Databricks", "PySpark",
+        "Delta Lake", "Kafka", "Airflow", "SQL", "dbt", "Terraform", "GitLab CI/CD", "Great Expectations", "Power BI",
+        "AWS DMS", "Bedrock", "MLlib", "Splunk", "CloudWatch", "Amundsen", "Python", "Agile/Scrum", "PCI-DSS", "SOX", "GDPR"
       ]
     },
     {
-     
-      "company": "Terakoya Academia Inc",
-      "position": "Software Engineer Intern",
-      "period": "Feburary - April 2021",
-      "url" : "",
+      "company": "Direct Global/Direct Co-ops",
+      "position": "Data Engineer Co-op",
+      "period": "Sep 2023 – Jan 2024",
+      "location": "Toronto, ON",
+      "url": "",
       "responsibilities": [
-        "Researched, Pioneered and rigorously assessed an innovative coding curriculum for K-12 students, under the mentorship of a senior AI engineer at APPLE and an Infrastructure Engineer in Tokyo.",
-        "Successfully implemented the curriculum in two schools in Nepal, resulting feedback from students and teachers alike.",
-        "Designed and implemented a pilot web-based application using Django, React and MySQL.",
-        "Staged a prototype web-based application on AWS ECS through CI/CD Jenkins pipe.",
-        "Interfaced with clients on a weekly basis, providing technological expertise."
+        "Designed and implemented ETL pipelines using Apache Spark on AWS EMR, processing 2M+ records per batch from retail and logistics systems with Parquet optimization.",
+        "Ingested structured and semi-structured data (CSV, JSON) from APIs and S3 into Redshift, creating schemas and materialized views for analytical querying.",
+        "Automated data workflows using AWS Glue and Lambda, reducing ETL runtimes by 50% through parallel processing and optimized file formats.",
+        "Orchestrated pipelines using Airflow with retry logic and monitored performance via CloudWatch alerts, ensuring high reliability and SLA adherence.",
+        "Developed custom data mapping documents and business transformation rules to support regulatory compliance (e.g., PCI, SOX).",
+        "Implemented data quality checks using Great Expectations and custom SQL scripts, maintaining 99.9% data accuracy across all pipelines.",
+        "Built interactive Power BI dashboards visualizing key operations and logistics KPIs, enabling faster decision-making for business stakeholders.",
+        "Secured data pipelines using IAM roles, S3 bucket policies, and KMS encryption to ensure compliance and restricted access.",
+        "Collaborated with stakeholders to define critical metrics and data lineage, ensuring business logic alignment across departments.",
+        "Developed reusable PySpark jobs and modular scripts for data ingestion and validation, improving development efficiency and code maintainability.",
+        "Delivered insights and self-service analytics to stakeholders across business units, resulting in faster decision-making cycles."
+      ],
+      "techStack": [
+        "AWS EMR", "S3", "Glue", "Lambda", "Redshift", "Snowflake", "Step Functions", "CloudWatch", "Kinesis", "Athena",
+        "PySpark", "SQL", "Terraform", "GitLab CI/CD", "Great Expectations", "IAM", "Lake Formation", "Agile/Scrum"
+      ]
+    },
+    {
+      "company": "TAI Inc.",
+      "position": "Software Engineer – Data Platform",
+      "period": "Jan 2021 – May 2022",
+      "location": "Kathmandu, Nepal",
+      "url": "",
+      "responsibilities": [
+        "Migrated VBA-based batch ETL pipelines to Azure Databricks and PySpark, improving maintainability and scalability across the platform.",
+        "Designed and orchestrated fault-tolerant ETL pipelines using Azure Data Factory and Airflow with automated retries and error handling.",
+        "Architected modular transformation layers with built-in data validation, schema checks, and audit rules to ensure data accuracy and lineage tracking.",
+        "Integrated Azure Blob Storage and Data Lake Gen2 for secure, centralized storage of structured and semi-structured datasets.",
+        "Implemented partitioning, caching, and Delta Lake ACID transactions in Databricks for efficient batch processing and rollback support.",
+        "Built data quality validation layers using Great Expectations and PySpark, enabling 95% reduction in production data issues.",
+        "Reduced ETL job latency by 50% through parallelism and optimized cluster configurations in Azure Databricks.",
+        "Developed CI/CD pipelines using Azure DevOps and Git for automated testing, deployment, and versioning of PySpark notebooks and SQL code.",
+        "Improved operational uptime to 99.5% by applying blue-green deployments and rollback strategies across production pipelines.",
+        "Implemented access control, encryption, and secure key storage via Azure Key Vault and RBAC to maintain GDPR compliance.",
+        "Integrated Elasticsearch with Databricks for real-time indexing and fast full-text search capabilities on processed datasets.",
+        "Designed RESTful APIs and internal data services to expose curated datasets to downstream applications and analytics tools.",
+        "Optimized compute and storage cost by applying incremental loads, file compaction, and performance tuning of Spark jobs.",
+        "Documented data models, transformation logic, and deployment procedures using Confluence and shared Git repositories.",
+        "Worked cross-functionally with analysts and business units to gather requirements and deliver self-serve data pipelines and dashboards.",
+        "Conducted performance audits and tuning to reduce cluster resource usage and improve SLA adherence.",
+        "Participated in Agile/Scrum rituals, including sprint planning, retrospectives, and code reviews for continuous delivery and quality assurance."
+      ],
+      "techStack": [
+        "Azure Databricks", "Azure Data Factory", "Azure Data Lake Gen2", "Delta Lake", "Azure DevOps", "Elasticsearch",
+        "PySpark", "Airflow", "Great Expectations", "Azure Blob Storage", "REST APIs", "Git", "Confluence", "SQL", "Python",
+        "AngularJS", "Azure Key Vault", "RBAC", "Agile/Scrum", "GDPR Compliance"
+      ]
+    },
+    {
+      "company": "Kunyo.co",
+      "position": "Junior Software Engineer",
+      "period": "Oct 2019 – Dec 2020",  
+      "location": "Kathmandu, Nepal",
+      "url": "",
+      "responsibilities": [
+        "Collaborated with clients to gather technical and business requirements, aligning development with their digital transformation goals.",
+        "Developed user-centric web applications using HTML5, CSS3, JavaScript, and PHP with MySQL backend under the guidance of senior developers.",
+        "Implemented responsive web designs using Bootstrap and media queries, improving cross-device compatibility by 40%.",
+        "Built secure backend logic and dynamic content features using PHP and JavaScript, increasing site engagement metrics.",
+        "Optimized web forms and navigation elements to enhance user experience, contributing to a 25% boost in client satisfaction scores.",
+        "Assisted in creating database schemas and writing SQL queries for CRUD operations, data validation, and analytics reporting.",
+        "Participated in unit and integration testing, creating test cases and debugging code to ensure feature reliability.",
+        "Supported the deployment and maintenance of applications on shared and cloud-based hosting platforms.",
+        "Used Git for version control, collaborating with senior developers on feature branches, bug fixes, and release planning.",
+        "Documented technical specifications, API integration steps, and user instructions for handover and team onboarding.",
+        "Learned and practiced Agile methodologies through weekly sprint meetings, retrospectives, and peer code reviews.",
+        "Maintained consistent communication with mentors to improve code quality, logic design, and web performance optimization.",
+        "Created reusable components and scripts for future development, contributing to a 20% reduction in coding time for similar projects."
+      ],
+      "techStack": [
+        "PHP", "HTML5", "CSS3", "JavaScript", "MySQL", "Bootstrap", "Git", "GitHub", "VS Code", "Agile/Scrum",
+        "Responsive Design", "API Integration", "Debugging", "Unit Testing", "Documentation"
       ]
     }
   ]

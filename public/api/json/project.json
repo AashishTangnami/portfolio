@@ -3,7 +3,7 @@
   [{
     "id": 1,
     "title": "Portfolio Website",
-    "description": "A personal portfolio website built using Next.Js and TailwindCSS to showcase my projects and skills.",
+    "description": "Personal portfolio built with Next.js and Tailwind CSS to showcase projects, experience, and writing with a performant, responsive UI.",
     "techStack": ["Next.Js", "Tailwind CSS", "TypeScript"],
     "githubLink": "https://github.com/AashishTangnami/portfolio",
     "externalLink": "https://aashishtangnami.vercel.app",
@@ -12,7 +12,7 @@
   {
     "id" : 2,
     "title": "Big Data Architecture",
-    "description": "A website to understand the architecture of HADOOP, HIVE, SPARK, and related tools.",
+    "description": "Educational site illustrating Hadoop, Hive, and Spark architectures with clear data flows, components, and practical examples.",
     "techStack": ["JavaScript", "Python", "Hadoop", "PySpark", "Hive"],
     "githubLink": "https://github.com/AashishTangnami/bigdata-architecture",
     "externalLink": "https://bigdata-architecture.vercel.app",
@@ -22,7 +22,7 @@
   {
     "id": 3,
     "title": "Brain Tumor Classifier",
-    "description": "Brain Tumor Detection by fine tuning a pre-trained model Efficientnet_V2_S using Pytorch with streamlit as frontend.",
+    "description": "Brain tumor classifier by fine‑tuning EfficientNet‑V2‑S in PyTorch, delivered with a Streamlit front end for interactive inference.",
     "techStack": ["Python", "Pytorch", "HuggingFace", "Streamlit"],
     "githubLink": "https://github.com/AashishTangnami/BrainTumorDetection",
     "externalLink": "https://huggingface.co/spaces/AashishTangnami/Brain_Tumor_Detection",
@@ -31,7 +31,7 @@
   {
     "id": 4,
     "title": "Data Engineering: ETL Pipeline",
-    "description": "A production ready ETL pipeline using Apache Spark on Databricks to process and transform data from DataLake or Delta Lake.",
+    "description": "Production‑ready ETL on Databricks (Apache Spark, Delta Lake) to ingest, transform, and model data from data lake sources.",
     "techStack": ["Python", "Pandas", "PySpark", "DataBricks", "Jupyter Notebook"],
     "githubLink": "https://github.com/AashishTangnami/Apache-Spark-Data-Engineering",
     "externalLink": "#",
@@ -39,9 +39,9 @@
   },
   {
     "id": 5,
-    "title": "Terakoya Academia Inc",
-    "description": "This project was an inhouse project for Terakoya Academia Inc. Firstly, it was built in Django later migrated into php.",
-    "techStack": ["Python", "Django", "React.Js" ],
+    "title": "Terakoya Academia Inc [ Now TAI Inc]",
+    "description": "Internal web platform for Terakoya Academia Inc.; initially built in Django and later migrated to PHP to align with hosting and team workflows.",
+    "techStack": ["Python", "Django", "React.Js", "PHP" ],
     "githubLink": "#",
     "externalLink": "https://tai.com.np",
     "backgroundImage": "#"
@@ -49,7 +49,7 @@
   {
     "id": 6,
     "title": "ETL Pipeline",
-    "description": "Solving the problem of data silos by building a scalable ETL pipeline to automate the process of ETL to downstreaming.",
+    "description": "Containerized ETL service in Rust that ingests, validates, and loads data into PostgreSQL with a focus on reliability and horizontal scaling.",
     "techStack": ["Rust","Docker", "PostgreSQL"],
     "githubLink": "#",
     "externalLink": "#",
@@ -58,8 +58,8 @@
   {
     "id": 7,
     "title": "Leetcode + HackerRank Solutions",
-    "description": "This is a repository of my solutions to LeetCode/ Hacker Rank problems. I have solved 50+ SQL problems and still solving.",
-    "techStack": ["SQL", "Python"],
+    "description": "Curated solutions to 50+ SQL challenges (LeetCode/HackerRank), highlighting query patterns and best practices for data work.",
+    "techStack": ["SQL", "Python","PostgreSQL"],
     "githubLink": "https://github.com/AashishTangnami/leetcode",
     "externalLink": "https://leetcode.com/u/AashishTangnami/",
     "backgroundImage": "#"

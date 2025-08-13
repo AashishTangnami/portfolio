@@ -1,6 +1,6 @@
 export type Skills = {
     skills: string[];
-    description: string;
+    description: string[];
     technologies: string[];
     picture: string;
 };
@@ -22,4 +22,6 @@ export type ExperienceData = {
     period: string;
     url: string;
     responsibilities: string[];
+    techStack?: string[];
+    location?: string;
 }

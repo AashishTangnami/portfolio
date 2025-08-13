@@ -10,6 +10,10 @@ export default function Experience(){
   const [experienceData, setExperienceData] = useState<ExperienceData[]>([]);
 
   const [activeTabId, setActiveTabId] = useState(0);
+  const [showMore, setShowMore] = useState(false);
+  const RESPONSIBILITY_LIMIT = 5;
+  const TECHSTACK_LIMIT = 8;
+
   const variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -34,13 +38,17 @@ export default function Experience(){
     }).catch(error => console.error('Error loading JSON:', error));
   }, []);
 
+  useEffect(() => {
+    setShowMore(false);
+  }, [activeTabId]);
+
   return (
     //min-h-screen flex flex-col items-center justify-center p-8 bg-white max-w-4xl mx-auto
     <section id="experience" className="bg-primary text-black min-h-screen border-b-2 justify-center mx-auto py-24">
       <h2 className="text-3xl font-bold text-center mt-10 mb-8">Where I’ve Worked</h2>
 
-      <div className="flex flex-col md:flex-row">
-        <div className="bg-slate-200 border-l-2 w-full text-md md:w-1/3 flex md:flex-col overflow-x-auto md:overflow-x-visible">
+      <div className="flex flex-col md:flex-row b">
+        <div className="bg-slate-50 border-l-1 w-full text-md md:w-1/3 flex md:flex-col overflow-x-auto md:overflow-x-visible">
           {experienceData.map((jobs, idx) => (
             
             <button
@@ -52,7 +60,7 @@ export default function Experience(){
               } py-2 px-4 border-l-4 md:border-l-0 focus:outline-none`}
               onClick={() => setActiveTabId(idx)}
             >
-              {jobs.company}
+            <h6 className="text-xl font-bold w-full py-4 bg-white rounded-l-xl">{jobs.company}</h6>
             </button>
           ))}
         </div>
@@ -75,15 +83,44 @@ export default function Experience(){
                     @ <a href={jobs.url} target="_blank" rel="noopener noreferrer">{jobs.company}</a>
                   </span>
                 </h3>
-                <p className="text-gray-500">{jobs.period}</p>
+                <p className="text-gray-500">
+                  {jobs.period}
+                  {jobs.location && (
+                    <span className='text-gray-600'> | {jobs.location}</span>)}
+                  </p>
+
+                {/* Responsibilities */}
                 <ul className="list-disc list-inside mb-4">
-                 
-                  {jobs.responsibilities.map((tech, i) => {
-                  return (
-                    <li key={i} className="mb-2">{tech}</li>
-                  );
-                })}
+                  {(showMore ? jobs.responsibilities : jobs.responsibilities.slice(0, RESPONSIBILITY_LIMIT)).map((resp, i) => (
+                    <li key={i} className="mb-2">{resp}</li>
+                  ))}
                 </ul>
+
+                {/* Tech-Stack Section */}
+                {jobs.techStack && jobs.techStack.length > 0 && (
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-lg mt-4 mb-2">Tech-Stack:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {(showMore ? jobs.techStack : jobs.techStack.slice(0, TECHSTACK_LIMIT)).map((env: string, i: number) => (
+                        <span
+                          key={i}
+                          className="bg-slate-50 text-primary px-2 py-1 rounded text-sm"
+                        >
+                          {env}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {(jobs.responsibilities.length > RESPONSIBILITY_LIMIT || (jobs.techStack && jobs.techStack.length > TECHSTACK_LIMIT)) && (
+                  <button
+                    onClick={() => setShowMore(!showMore)}
+                    className="mt-2 text-blue-500 hover:text-blue-600 underline"
+                  >
+                    Show {showMore ? 'Less' : 'More'}
+                  </button>
+                )}
                 
               </div>
             </motion.div>)

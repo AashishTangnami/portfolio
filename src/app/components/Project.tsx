@@ -5,6 +5,7 @@ import { FaFolderOpen } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { ProjectData } from '../utils/type';
 import { IconBrandGithub } from '@tabler/icons-react';
+import { getProjectIcon } from '@/app/utils/icons';
 
 export default function Project() {
   const GRID_LIMIT = 6; // Default for larger screens
@@ -13,8 +14,6 @@ export default function Project() {
   const [projectData, setProjectData] = useState<ProjectData[]>([]);
   const [gridLimit, setGridLimit] = useState(GRID_LIMIT); // Default GRID_LIMIT based on screen size
 
-  
-  
   useEffect(() => {
     // JSON data is dummy data
     fetch('api/json/project.json')
@@ -69,7 +68,7 @@ export default function Project() {
         {projectsToShow.map((project, i) => (
           <motion.div
             key={project.id}
-            className="relative bg-slate-200 rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-2"
+            className="relative bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.005, delay: i * 0.005 }}
@@ -93,17 +92,22 @@ export default function Project() {
                 </div>
               </div>
               <div>
-                <p className="bg-slate-200 p-2 rounded-md">
+                <p className="bg-slate-50 p-2 rounded-md">
                   {project.description}
                 </p>
               </div>
               
             </div>
-			<div className="my-auto px-4 py-4">
-                <ul className="flex flex-wrap space-x-2 mt-auto">
-                  {project.techStack.map((tech: string, i: number) => (
-                    <li key={i} className="text-sm text-textPrimary font-medium">{tech}</li>
-                  ))}
+      		<div className="my-auto px-4 py-4">
+                <ul className="flex flex-wrap gap-3 mt-auto">
+                  {project.techStack.map((tech: string, i: number) => {
+                    const Icon = getProjectIcon(tech, 'w-4 h-4');
+                    return (
+                      <li key={i} title={tech} className="text-textPrimary">
+                        {Icon ? Icon : <span className="text-sm font-medium">{tech}</span>}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
           </motion.div>
@@ -115,7 +119,7 @@ export default function Project() {
           onClick={() => setShowMore(!showMore)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="mt-8 mb-8 py-2 px-4 bg-green-400 text-textPrimary rounded-lg hover:bg-green-500 transition"
+          className="mt-8 mb-8 py-2 px-4 bg-slate-50 text-textPrimary rounded-lg hover:bg-slate-100 transition"
         >
           Show {showMore ? 'Less' : 'More'}
         </motion.button>
