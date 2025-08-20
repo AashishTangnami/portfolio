@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ABOUT_ICON_COMPONENTS } from '@/app/utils/icons';
+import { calculateTotalExperience } from '@/app/utils/experienceCalculator';
 
 interface Skill {
     name: string;
@@ -116,6 +117,12 @@ const ScrollingSkills: React.FC = () => {
 };
 
 export default function About() {
+    const [totalExperience, setTotalExperience] = useState<number>(5);
+
+    useEffect(() => {
+        calculateTotalExperience().then(setTotalExperience);
+    }, []);
+
     return (
         <section 
             id="about" 
@@ -135,7 +142,7 @@ export default function About() {
                         className="space-y-6"
                     >
                         <p className="text-md sm:text-lg md:text-md leading-relaxed">
-                            Hello! I am a Data Engineer and Software Engineer with almost 5 years ( and counting ) of experience 
+                            Hello! I am a Data Engineer and Software Engineer with {totalExperience} years of experience 
                             in developing scalable, data-driven applications. My work spans Data Engineering and full-stack development,
                             where I’ve consistently delivered performance-optimized systems that solve real-world problems across diverse industries.
                             In 2024, I earned the Ontario College Graduate Certificate in Artificial Intelligence and Data Science with Dean’s List honors,
