@@ -1,6 +1,15 @@
 {
   "experience": [
     {
+      "company" : "Two Circles",
+      "position": "Data Engineer - Remote",
+      "period":"",
+      "location":"Vancouver, BC, Canada",
+      "url":"",
+      "responsibilities":[],
+      "techStack": []
+    },
+    {
       "company": "American Express",
       "position": "Data Engineer",
       "period": "Feb 2024 – Present",
