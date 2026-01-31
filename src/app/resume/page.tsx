@@ -2,14 +2,14 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { IoArrowBack } from 'react-icons/io5';
 
 // Dynamically import FaFilePdf icon
 const FaFilePdf = dynamic(() => import('react-icons/fa').then(mod => mod.FaFilePdf), { ssr: false });
 
 // Animation variants
-const buttonVariants = {
+const buttonVariants: Variants = {
   hover: {
     scale: 1.05,
     transition: { duration: 0.3 },
@@ -20,7 +20,7 @@ const buttonVariants = {
   },
 };
 
-const arrowVariants = {
+const arrowVariants: Variants = {
   animate: {
     x: ["0%", "-10%", "0%"],
     transition: {
@@ -31,7 +31,7 @@ const arrowVariants = {
   },
 };
 
-const fileVariants = {
+const fileVariants: Variants = {
   animate: {
     y: ["0%", "10%", "0%"],
     transition: {

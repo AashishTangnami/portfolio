@@ -12,10 +12,16 @@ export async function calculateTotalExperience(): Promise<number> {
 
     data.experience.forEach((exp: any) => {
       const period = exp.period;
-      const [startStr, endStr] = period.split(' – ');
+      if (!period) return;
       
-      const startDate = parseDate(startStr);
-      const endDate = endStr === 'Present' ? currentDate : parseDate(endStr);
+      // Handle both " – " (en-dash) and " - " (hyphen) separators
+      const separator = period.includes(' – ') ? ' – ' : ' - ';
+      const [startStr, endStr] = period.split(separator);
+      
+      if (!startStr || !endStr) return;
+      
+      const startDate = parseDate(startStr.trim());
+      const endDate = (endStr.trim() === 'Present' || endStr.trim() === 'Now') ? currentDate : parseDate(endStr.trim());
       
       const months = (endDate.getFullYear() - startDate.getFullYear()) * 12 + 
                      (endDate.getMonth() - startDate.getMonth());
@@ -30,7 +36,9 @@ export async function calculateTotalExperience(): Promise<number> {
 }
 
 function parseDate(dateStr: string): Date {
-  const [month, year] = dateStr.split(' ');
+  // Remove commas and extra spaces
+  const cleaned = dateStr.replace(/,/g, '').trim();
+  const [month, year] = cleaned.split(' ');
   const monthIndex = new Date(`${month} 1, 2000`).getMonth();
   return new Date(parseInt(year), monthIndex);
 }
