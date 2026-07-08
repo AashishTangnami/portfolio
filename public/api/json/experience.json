@@ -6,8 +6,21 @@
       "period":"Nov, 2025 - Now",
       "location":"Vancouver, BC, Canada",
       "url":"",
-      "responsibilities":[],
-      "techStack": []
+      "responsibilities":[
+        "Develop scalable data integration pipelines for fan intelligence, audience analytics, and customer data products across multiple client data environments.",
+        "Build and maintain a shared integration framework supporting multiple data engines, including Redshift, MySQL, Snowflake, Databricks, DuckDB, and MySQL.",
+        "Implement test-first development practices for data pipelines, including test design, implementation, code review, and refactoring to catch schema and data issues before production deployment.",
+        "Design and implement automated PII handling within the integration framework, enabling masking and redaction of sensitive fields during data ingestion.",
+        "Built reusable flattening and unnesting logic to transform deeply nested JSON, arrays, structs, and multi-level API responses into clean, query-ready analytical tables.",
+        "Implement schema evolution support to handle upstream changes such as new columns, type changes, and removed fields without breaking production data workflows.",
+        "Orchestrate Azure Data Factory pipelines through an internal Data Management Hub to automate data ingestion, transformation, and execution workflows.",
+        "Create and deploy custom dataflow jobs through Azure Function Apps, enabling reusable and automated pipeline execution across client environments.",
+        "Enable cross-platform data movement across databases, warehouses, and lakehouses by resolving engine-specific compatibility issues related to data types, SQL dialects, and load behavior.",
+        "Troubleshoot production pipeline failures, source-system outages, and data inconsistencies using structured monitoring, logging, documentation, and debugging practices.",
+        "Improve reliability and maintainability of shared integration components through code reviews, refactoring, reusable design patterns, and technical documentation.",
+        "Collaborate with engineering, analytics, and business teams to deliver reliable data products supporting fan intelligence and client-facing audience insights.],"
+      ],
+      "techStack": ["Python", "SQL", "Pandas", "Polars", "orjson", "PyArrow", "Azure Data Factory", "Azure Function Apps", "Internal Data Management Hub", "Redshift", "MySQL", "Snowflake", "Databricks", "DuckDB", "DynamoDB", "AWS", "Azure" ]
     },
     {
       "company": "American Express",
